@@ -6,7 +6,7 @@
 
 
 #To-Dos:
-#- Preprocessing: exclude observations where: Y = 0 & Wind Speed > Cut-In speed
+#- Preprocessing: exclude observations where: Y = 0 & Wind Speed < Cut-In speed
 #- Preproccesing: explain negative power values
 #- XGBoost: figure out what a leaf value represents
 
