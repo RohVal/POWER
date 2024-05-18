@@ -6,7 +6,7 @@
 
 
 #To-Dos:
-#- Preprocessing: exclude observations where: Y = 0 & Wind Speed < Cut-In speed
+#- Preprocessing: discuss exclude observations where: Y = 0 & Wind Speed < Cut-In speed
 #- Preproccesing: explain negative power values
 #- XGBoost: figure out what a leaf value represents
 
@@ -16,6 +16,9 @@
 #- Possibility to make predictions for different turbines separately and for the whole wind farm (all the turbines combined)
 #- Include different accuracy metrics in the output (MAE, R2, etc.)
 #- Replace wind direction values with nominal ones
+
+#Questions to the prof:
+#Is it ok to do the final presentation without PowerPoint (by simply showing our code, relevant statistical graphics and the application)?
 
 
 
