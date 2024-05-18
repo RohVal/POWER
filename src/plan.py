@@ -15,6 +15,7 @@
 #- Pages for different models
 #- Possibility to make predictions for different turbines separately and for the whole wind farm (all the turbines combined)
 #- Include different accuracy metrics in the output (MAE, R2, etc.)
+#- Replace wind direction values to nominal
 
 
 
