@@ -1,4 +1,5 @@
 import pandas as pd
+from sklearn.preprocessing import OneHotEncoder
 
 
 def combine_values_hourly(df: pd.DataFrame) -> pd.DataFrame:
@@ -56,6 +57,35 @@ def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def map_wind_direction(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Map the wind direction to the corresponding cardinal direction
+    """
+
+    directions = {
+        (11.25, 33.75): "N/NE",
+        (33.75, 56.25): "NE",
+        (56.25, 78.75): "E/NE",
+        (78.75, 101.25): "E",
+        (101.25, 123.75): "E/SE",
+        (123.75, 146.25): "SE",
+        (146.25, 168.75): "S/SE",
+        (168.75, 191.25): "S",
+        (191.25, 213.75): "S/SW",
+        (213.75, 236.25): "SW",
+        (236.25, 258.75): "W/SW",
+        (258.75, 281.25): "W",
+        (281.25, 303.75): "W/NW",
+        (303.75, 326.25): "NW",
+        (326.25, 348.75): "N/NW"
+    }
+
+    df['Wind direction (°)'] = df['Wind direction (°)'].apply(
+        lambda x: next((v for (k1, k2), v in directions.items() if k1 <= x < k2), "N"))
+
+    return df
+
+
 def remove_columns_except(columns: list[str], df: pd.DataFrame) -> pd.DataFrame:
     """
     Remove all columns from the dataframe except the given columns
@@ -91,6 +121,8 @@ def preprocess_data(path: str) -> pd.DataFrame:
     df = remove_columns_except(columns=columns, df=df)
     df = combine_values_hourly(df=df)
     df = handle_missing_values(df=df)
+    df = map_wind_direction(df=df)
+    df = encode_wind_direction(df=df)
 
     return df
 
