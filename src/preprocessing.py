@@ -5,7 +5,13 @@ from sklearn.preprocessing import OneHotEncoder
 
 def combine_values_hourly(df: pd.DataFrame) -> pd.DataFrame:
     """
-    The data is recorded every 10 minutes. We have to combine the values to hourly values.
+    Combine the values in the DataFrame to hourly values. The values are averaged over the hour.
+
+    Args:
+        df (pd.DataFrame): DataFrame containing the data
+
+    Returns:
+        pd.DataFrame: DataFrame with the values averaged over the hour
     """
 
     # convert the date and time column to a datetime object
@@ -21,8 +27,13 @@ def combine_values_hourly(df: pd.DataFrame) -> pd.DataFrame:
 
 def encode_wind_direction(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Encode the wind direction column to numerical values using one-hot encoding
-    """
+    Encode the wind direction column using one-hot encoding
+
+    Args:
+        df (pd.DataFrame): DataFrame containing the data
+
+    Returns:
+        pd.DataFrame: DataFrame with the wind direction column encoded"""
 
     # encode the wind direction column, drop the first column to avoid multicollinearity
     encoder = OneHotEncoder(handle_unknown="ignore", sparse_output=False, drop='first').set_output(transform="pandas")
@@ -41,7 +52,13 @@ def encode_wind_direction(df: pd.DataFrame) -> pd.DataFrame:
 
 def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Handle missing values in the dataframe
+    Handle missing values in the DataFrame by filling them with the rolling mean
+
+    Args:
+        df (pd.DataFrame): DataFrame containing the data
+
+    Returns:
+        pd.DataFrame: DataFrame with missing values filled with the rolling mean
     """
 
     # drop rows with missing power values, as they are the target values
@@ -60,7 +77,13 @@ def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
 
 def map_wind_direction(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Map the wind direction to the corresponding cardinal direction
+    Map the wind direction values to the nearest cardinal direction
+
+    Args:
+        df (pd.DataFrame): DataFrame containing the data
+
+    Returns:
+        pd.DataFrame: DataFrame with the wind direction values mapped to the nearest cardinal direction
     """
 
     directions = {
@@ -89,14 +112,27 @@ def map_wind_direction(df: pd.DataFrame) -> pd.DataFrame:
 
 def load_data(path: str) -> pd.DataFrame:
     """
-    Load data from the given path
+    Load the data from the given path
+
+    Args:
+        path (str): Path to the data file
+
+    Returns:
+        pd.DataFrame: DataFrame containing the data
     """
+
     return pd.read_csv(path)
 
 
 def preprocess_data(path: str) -> pd.DataFrame:
     """
-    Preprocess the data
+    Preprocess the data for the wind turbine power prediction model
+
+    Args:
+        path (str): Path to the data file
+
+    Returns:
+        pd.DataFrame: Preprocessed DataFrame
     """
 
     # Load the data
@@ -118,16 +154,15 @@ def preprocess_data(path: str) -> pd.DataFrame:
 
 def remove_columns_except(columns: list[str], df: pd.DataFrame) -> pd.DataFrame:
     """
-    Remove all columns from the dataframe except the given columns
+    Remove columns from the DataFrame that are not in the list of columns to keep.
 
-    args:
-    columns: list[str]
-    df: pd.DataFrame
+    Args:
+        columns (list[str]): List of columns to keep.
+        df (pd.DataFrame): DataFrame containing data.
 
-    returns:
-    pd.DataFrame
+    Returns:
+        pd.DataFrame: DataFrame with columns not in the list removed.
     """
-
 
     return df[columns]
 
