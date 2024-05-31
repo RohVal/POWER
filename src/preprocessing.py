@@ -206,5 +206,4 @@ def winsorize_power(df, max_power=2050):
 
     return df
 
-
 # TODO instead of rolling mean, try using interpolation
