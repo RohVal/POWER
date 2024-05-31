@@ -1,0 +1,2303 @@
+[
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": { "units": 20, "dropout": 0.2 },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 14,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 185659.42183211495,
+      "MAE": 327.5031893577845,
+      "R2": 0.5306374603596713
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": { "units": 20, "dropout": 0.2 },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 14,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 127826.6801807064,
+      "MAE": 259.1292068720957,
+      "R2": 0.6768434661093495
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": { "units": 20, "dropout": 0.2 },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 14,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=10, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 117149.06079850347,
+      "MAE": 248.16791342109985,
+      "R2": 0.7032226138047917
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 132320.72825265906,
+      "MAE": 268.1372875070774,
+      "R2": 0.6647877532896767
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 119636.25681753125,
+      "MAE": 252.68736785278253,
+      "R2": 0.6969217222018125
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 144095.80095216428,
+      "MAE": 278.75135852395,
+      "R2": 0.6349575926874642
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 1]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 0.8264924731180029,
+      "MAE": 0.6873131711500833,
+      "R2": 0.3088595131187505
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 1]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 0.8212298148683863,
+      "MAE": 0.6911685155738674,
+      "R2": 0.31326032293037276
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 129518.88895794116,
+      "MAE": 264.1947420286141,
+      "R2": 0.6718857405612573
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 132544.38568237287,
+      "MAE": 266.0695805432888,
+      "R2": 0.6642211549154244
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 124350.53335437868,
+      "MAE": 252.95391169090695,
+      "R2": 0.6849788977449146
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 272260.8623224181,
+      "MAE": 399.6541639346217,
+      "R2": 0.3102730270942734
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 128,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 64,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 239445.71658788994,
+      "MAE": 372.88199341121117,
+      "R2": 0.3934046639364914
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 128,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 64,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 32,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 430275.4158990356,
+      "MAE": 514.8117163743301,
+      "R2": -0.09003019233939291
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 237454.50910055675,
+      "MAE": 367.6761406942139,
+      "R2": 0.39844905225198546
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 99241.20204257125,
+      "MAE": 208.26223779124,
+      "R2": 0.6447463686272876
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 132810.43957645603,
+      "MAE": 252.6279177341276,
+      "R2": 0.5245786027107681
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 128,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 64,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 508025.76496600773,
+      "MAE": 485.0740894846986,
+      "R2": -0.8185793210934218
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 78692.66829362049,
+      "MAE": 191.64619562474044,
+      "R2": 0.7183039342699131
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 88392.22028125978,
+      "MAE": 200.77984499476136,
+      "R2": 0.683582457752336
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 92702.66489486804,
+      "MAE": 213.36348194940567,
+      "R2": 0.6681523634941224
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 195032.20531213793,
+      "MAE": 327.05765778060606,
+      "R2": 0.30184341034035433
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 86417.48384184921,
+      "MAE": 192.15934093340266,
+      "R2": 0.6906514198030342
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 137397.9201119211,
+      "MAE": 271.2904272835761,
+      "R2": 0.5081568032410628
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 60,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 408959.94923961215,
+      "MAE": 437.3471238650608,
+      "R2": -0.4639535199407401
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 40,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 100567.46904930647,
+      "MAE": 210.52127799938546,
+      "R2": 0.63999873195406
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 40,
+        "dropout": 0.2,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 336841.9481422521,
+      "MAE": 399.5316583413547,
+      "R2": -0.20579278377605514
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 40,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 114674.82200858032,
+      "MAE": 231.31215606761415,
+      "R2": 0.5894986547211304
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 4]
+      },
+      "params_second_layer": {
+        "units": 40,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 0.1795249946707585,
+      "MAE": 0.2981971191701667,
+      "R2": 0.7662990839443664
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 4]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 32,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 0.17965794705629404,
+      "MAE": 0.2942149635482927,
+      "R2": 0.7661260100258939
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 4]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 8,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 0.21486477705756993,
+      "MAE": 0.3136768380245519,
+      "R2": 0.7202946847677998
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [12, 4]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 8,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 0.20369241316853,
+      "MAE": 0.31479831949886067,
+      "R2": 0.7338349198935377
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 4]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 0.18237649440122644,
+      "MAE": 0.2995361238915017,
+      "R2": 0.761688452275954
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 3]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 0.166742265741006,
+      "MAE": 0.28194331634380765,
+      "R2": 0.7821177145102198
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 4]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 0.1801597276895926,
+      "MAE": 0.2901604797104256,
+      "R2": 0.7645851035561919
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 112586.13618630593,
+      "MAE": 230.11676293860063,
+      "R2": 0.6578788365872844
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 106808.74666489393,
+      "MAE": 226.01081989907408,
+      "R2": 0.6754348811546467
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": false,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 443518.8874524977,
+      "MAE": 450.1121797224797,
+      "R2": -0.3477431850016528
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=10, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 75567.70648719686,
+      "MAE": 189.2435132443715,
+      "R2": 0.782111200530796
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 40,
+        "dropout": 0,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=10, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 85955.3422094935,
+      "MAE": 202.86850599181298,
+      "R2": 0.7522542932689802
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": { "units": 20, "dropout": 0.2 },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 14,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 185659.42183211495,
+      "MAE": 327.5031893577845,
+      "R2": 0.5306374603596713
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": { "units": 20, "dropout": 0.2 },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 14,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 127826.6801807064,
+      "MAE": 259.1292068720957,
+      "R2": 0.6768434661093495
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [24, 19]
+      },
+      "params_second_layer": { "units": 20, "dropout": 0.2 },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 14,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 24
+    },
+    "metrics": {
+      "MSE": 135027.78754704495,
+      "MAE": 268.1593439138038,
+      "R2": 0.6604584234863043
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [48, 19]
+      },
+      "params_second_layer": { "units": 20, "dropout": 0.2 },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 14,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 48
+    },
+    "metrics": {
+      "MSE": 166434.51391967194,
+      "MAE": 302.7844435267383,
+      "R2": 0.5858198511066879
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [72, 19]
+      },
+      "params_second_layer": { "units": 20, "dropout": 0.2 },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 14,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 72
+    },
+    "metrics": {
+      "MSE": 130877.60034692394,
+      "MAE": 263.83961196704456,
+      "R2": 0.6768807036758826
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 100,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": { "units": 50, "dropout": 0.2 },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 14,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 145160.4070631364,
+      "MAE": 281.983509282423,
+      "R2": 0.6322605926706635
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 100,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": { "units": 50, "dropout": 0.2 },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 20,
+        "batch_size": 32,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 277326.85385368415,
+      "MAE": 364.41230995697185,
+      "R2": 0.2974391920222007
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 100,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": { "units": 50, "dropout": 0.2 },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 200,
+        "batch_size": 32,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 117784.91138387696,
+      "MAE": 248.1148868384132,
+      "R2": 0.7016117935946117
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 100,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": { "units": 50, "dropout": 0.2 },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 200,
+        "batch_size": 32,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 130141.02315743458,
+      "MAE": 263.21340232558157,
+      "R2": 0.6703096685011845
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 100,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 18]
+      },
+      "params_second_layer": { "units": 50, "dropout": 0.2 },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 200,
+        "batch_size": 32,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 348828.08039697225,
+      "MAE": 469.27815406140513,
+      "R2": -0.19655107749043332
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 100,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 18]
+      },
+      "params_second_layer": { "units": 50, "dropout": 0.2 },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 2000,
+        "batch_size": 32,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 209863.46958390696,
+      "MAE": 377.549021947133,
+      "R2": 0.2801257273475962
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 100,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 18]
+      },
+      "params_second_layer": { "units": 50, "dropout": 0.2 },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 2000,
+        "batch_size": 32,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 264520.6177347669,
+      "MAE": 390.388079715151,
+      "R2": 0.09264062168167797
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 100,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 18]
+      },
+      "params_second_layer": { "units": 50, "dropout": 0.2 },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 500,
+        "batch_size": 32,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 207584.0262983166,
+      "MAE": 353.96147789990624,
+      "R2": 0.28794468021500175
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 100,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 18]
+      },
+      "params_second_layer": { "units": 50, "dropout": 0.2 },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 200,
+        "batch_size": 32,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 348995.6791784969,
+      "MAE": 469.3460315319625,
+      "R2": -0.1971259753094139
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 100,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 18]
+      },
+      "params_second_layer": { "units": 50, "dropout": 0.2 },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 200,
+        "batch_size": 64,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 443961.886059049,
+      "MAE": 513.147219806848,
+      "R2": -0.522879329336386
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 100,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 18]
+      },
+      "params_second_layer": { "units": 50, "dropout": 0.2 },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 400,
+        "batch_size": 64,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 331536.12894659693,
+      "MAE": 462.56082376852953,
+      "R2": -0.1372361762464953
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 100,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 18]
+      },
+      "params_second_layer": { "units": 50, "dropout": 0.2 },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 400,
+        "batch_size": 64,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 725872.6182097812,
+      "MAE": 677.190656126091,
+      "R2": -1.4898903277835265
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 100,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 18]
+      },
+      "params_second_layer": { "units": 50, "dropout": 0.2 },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 64,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 594310.5981219079,
+      "MAE": 601.9348051641374,
+      "R2": -1.0386059107898733
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 100,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 50,
+        "dropout": 0.2,
+        "return_sequences": true
+      },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 100,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 804100.387710747,
+      "MAE": 670.5802215319566,
+      "R2": -1.0370527059863344
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 100,
+        "dropout": 0.2,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": { "units": 50, "dropout": 0.2 },
+      "compile_params": {
+        "optimizer": "RMSprop",
+        "loss": "mean_squared_error"
+      },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 64,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 131886.82081495068,
+      "MAE": 265.3650871539767,
+      "R2": 0.665886984596663
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 73298.42312600458,
+      "MAE": 188.2845218455309,
+      "R2": 0.7886543583188308
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 70,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 76809.34079621792,
+      "MAE": 194.34703903908976,
+      "R2": 0.7785311235171022
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 40,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 87124.99765009063,
+      "MAE": 206.71262337753274,
+      "R2": 0.7487873851914273
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 81580.57645143176,
+      "MAE": 200.1110897771492,
+      "R2": 0.7647739399631017
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 85553.72042644894,
+      "MAE": 206.31854936738057,
+      "R2": 0.753317940951388
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": {
+        "units": 15,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 83233.94100080826,
+      "MAE": 201.48395611419656,
+      "R2": 0.760006697003179
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 102783.88371824034,
+      "MAE": 227.6337442181966,
+      "R2": 0.7036372007407156
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 32,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 97385.87609908941,
+      "MAE": 225.15518491456976,
+      "R2": 0.7192015926527777
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 32,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=7, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 110927.21808083142,
+      "MAE": 238.733211178285,
+      "R2": 0.680157047240994
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": true
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 64,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=10, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 454271.5545640765,
+      "MAE": 499.3874700923162,
+      "R2": -0.3098278121454636
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [12, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=10, monitor='loss')"
+      },
+      "timestep": 12
+    },
+    "metrics": {
+      "MSE": 82267.7061877225,
+      "MAE": 199.84012031839237,
+      "R2": 0.7627926985005816
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=10, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 78631.40511592684,
+      "MAE": 195.36763058124504,
+      "R2": 0.7733637894871083
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [4, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=10, monitor='loss')"
+      },
+      "timestep": 4
+    },
+    "metrics": {
+      "MSE": 77598.61266568338,
+      "MAE": 193.0213337763761,
+      "R2": 0.776271392668286
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.1,
+        "return_sequences": true,
+        "input_shape": [24, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.1,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=10, monitor='loss')"
+      },
+      "timestep": 24
+    },
+    "metrics": {
+      "MSE": 90872.7128217183,
+      "MAE": 212.56552574937527,
+      "R2": 0.7385282197111033
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0.05,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0.05,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=10, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 77575.7297637984,
+      "MAE": 192.23831996614967,
+      "R2": 0.7764065210901556
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=10, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 86789.90873016992,
+      "MAE": 204.13741832682987,
+      "R2": 0.7498488549662031
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 50,
+        "dropout": 0,
+        "return_sequences": true,
+        "input_shape": [6, 19],
+        "use_bias": true
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=10, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 88868.46282021276,
+      "MAE": 208.47713517041672,
+      "R2": 0.7438579201530853
+    }
+  },
+  {
+    "hyperparameters": {
+      "params_first_layer": {
+        "units": 40,
+        "dropout": 0,
+        "return_sequences": true,
+        "input_shape": [6, 19]
+      },
+      "params_second_layer": {
+        "units": 20,
+        "dropout": 0,
+        "return_sequences": false
+      },
+      "compile_params": { "optimizer": "Adam", "loss": "mean_squared_error" },
+      "fit_params": {
+        "validation_split": 0.3,
+        "shuffle": false,
+        "epochs": 1000,
+        "batch_size": 16,
+        "verbose": 1,
+        "callbacks": "EarlyStopping(patience=10, monitor='loss')"
+      },
+      "timestep": 6
+    },
+    "metrics": {
+      "MSE": 82105.16023208917,
+      "MAE": 200.20865934997002,
+      "R2": 0.7633515215565516
+    }
+  }
+]
