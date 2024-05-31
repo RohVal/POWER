@@ -1,4 +1,5 @@
 import pandas as pd
+from pandas.io.formats.style import plt
 from sklearn.preprocessing import OneHotEncoder
 
 
@@ -110,6 +111,7 @@ def preprocess_data(path: str) -> pd.DataFrame:
     df = map_wind_direction(df=df)
     df = encode_wind_direction(df=df)
     df = winsorize_power(df=df)
+    df = remove_outliers(df=df, cut_in_speed=3.0)
 
     return df
 
@@ -125,7 +127,30 @@ def remove_columns_except(columns: list[str], df: pd.DataFrame) -> pd.DataFrame:
     returns:
     pd.DataFrame
     """
+
+
     return df[columns]
+
+
+def remove_outliers(df, cut_in_speed=3.0) -> pd.DataFrame:
+    """
+    Filters out rows with zero power output but wind speed above the cut-in speed.
+
+    Args:
+        df (pd.DataFrame): DataFrame containing data.
+        cut_in_speed (float): Minimum wind speed (m/s) for power generation.
+
+    Returns:
+        pd.DataFrame: Filtered DataFrame with rows meeting the criteria removed.
+    """
+
+    # Filter rows where 'Power' is zero and 'Wind Speed' is greater than the cut-in speed
+    filter_condition = (df["Power (kW)"] == 0) & (df["Wind speed (m/s)"] > cut_in_speed)
+
+    # Invert the filter to select rows that do not meet the condition
+    filtered_df = df[~filter_condition]
+
+    return filtered_df
 
 
 def winsorize_power(df, max_power=2050):
@@ -144,4 +169,6 @@ def winsorize_power(df, max_power=2050):
     df["Power (kW)"] = df["Power (kW)"].clip(lower=0, upper=max_power)
 
     return df
+
+
 # TODO instead of rolling mean, try using interpolation
