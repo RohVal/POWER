@@ -86,20 +86,6 @@ def map_wind_direction(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def remove_columns_except(columns: list[str], df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Remove all columns from the dataframe except the given columns
-
-    args:
-    columns: list[str]
-    df: pd.DataFrame
-
-    returns:
-    pd.DataFrame
-    """
-    return df[columns]
-
-
 def load_data(path: str) -> pd.DataFrame:
     """
     Load data from the given path
@@ -123,7 +109,39 @@ def preprocess_data(path: str) -> pd.DataFrame:
     df = handle_missing_values(df=df)
     df = map_wind_direction(df=df)
     df = encode_wind_direction(df=df)
+    df = winsorize_power(df=df)
 
     return df
 
+
+def remove_columns_except(columns: list[str], df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Remove all columns from the dataframe except the given columns
+
+    args:
+    columns: list[str]
+    df: pd.DataFrame
+
+    returns:
+    pd.DataFrame
+    """
+    return df[columns]
+
+
+def winsorize_power(df, max_power=2050):
+    """
+    Winsorizes wind power generation data within a pandas DataFrame.
+
+    Args:
+        df (pd.DataFrame): DataFrame containing wind power data.
+        column_name (str): Name of the column with wind power data.
+        max_power (float): Maximum power output of the wind turbine.
+
+    Returns:
+        pd.DataFrame: DataFrame with winsorized data.
+    """
+
+    df["Power (kW)"] = df["Power (kW)"].clip(lower=0, upper=max_power)
+
+    return df
 # TODO instead of rolling mean, try using interpolation
