@@ -13,6 +13,13 @@ def combine_values_hourly(df: pd.DataFrame) -> pd.DataFrame:
 
     Returns:
         pd.DataFrame: DataFrame with the values averaged over the hour
+    Combine the values in the DataFrame to hourly values. The values are averaged over the hour.
+
+    Args:
+        df (pd.DataFrame): DataFrame containing the data
+
+    Returns:
+        pd.DataFrame: DataFrame with the values averaged over the hour
     """
 
     # convert the date and time column to a datetime object
@@ -34,8 +41,7 @@ def encode_wind_direction(df: pd.DataFrame) -> pd.DataFrame:
         df (pd.DataFrame): DataFrame containing the data
 
     Returns:
-        pd.DataFrame: DataFrame with the wind direction column encoded
-    """
+        pd.DataFrame: DataFrame with the wind direction column encoded"""
 
     # encode the wind direction column, drop the first column to avoid multicollinearity
     encoder = OneHotEncoder(handle_unknown="ignore", sparse_output=False, drop='first').set_output(transform="pandas")
@@ -165,7 +171,6 @@ def remove_columns_except(columns: list[str], df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         pd.DataFrame: DataFrame with columns not in the list removed.
     """
-
 
     return df[columns]
 
