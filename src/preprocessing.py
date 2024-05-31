@@ -33,7 +33,8 @@ def encode_wind_direction(df: pd.DataFrame) -> pd.DataFrame:
         df (pd.DataFrame): DataFrame containing the data
 
     Returns:
-        pd.DataFrame: DataFrame with the wind direction column encoded"""
+        pd.DataFrame: DataFrame with the wind direction column encoded
+    """
 
     # encode the wind direction column, drop the first column to avoid multicollinearity
     encoder = OneHotEncoder(handle_unknown="ignore", sparse_output=False, drop='first').set_output(transform="pandas")
