@@ -1,5 +1,6 @@
 import pandas as pd
 from pandas.io.formats.style import plt
+from pandas.io.formats.style import plt
 from sklearn.preprocessing import OneHotEncoder
 
 
@@ -165,6 +166,7 @@ def remove_columns_except(columns: list[str], df: pd.DataFrame) -> pd.DataFrame:
         pd.DataFrame: DataFrame with columns not in the list removed.
     """
 
+
     return df[columns]
 
 
@@ -205,5 +207,6 @@ def winsorize_power(df, max_power=2050):
     df["Power (kW)"] = df["Power (kW)"].clip(lower=0, upper=max_power)
 
     return df
+
 
 # TODO instead of rolling mean, try using interpolation
