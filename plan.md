@@ -28,10 +28,10 @@ _____________________________________
 ## Stucture of the preliminary presentation 
 
 - Introduction (Petr Kh.):
-Current state of affairs, overview
-Features & Technical/Physical infos (+ graphic with linreg)
-A brief literature overview (research trends, approaches)
-Challenges
+-   Current state of affairs, overview
+-   Features & Technical/Physical infos (+ graphic with linreg)
+-   A brief literature overview (research trends, approaches)
+-   Challenges
 
 - Models (Nikolas & Rohit):
 . XGBoost
