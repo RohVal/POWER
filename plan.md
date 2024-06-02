@@ -22,3 +22,36 @@
 
 ## Questions for Charlie:
 - Where might negative power values come from? (~9% of the rows)
+
+_____________________________________
+
+Stucture of the preliminary presentation 
+
+- Introduction (Petr Kh.):
+    . Current state of affairs, overview
+    . Features & Technical/Physical infos (+ graphic with linreg)
+    . A brief literature overview (research trends, approaches)
+    . Challenges
+
+- Models (Nikolas & Rohit):
+    . XGBoost
+      How it works (briefly)
+      Hyperparameters Optimization: Grid Search, Bayessian, manual/default
+      Results (incl. comparison)
+    . LSTM
+      How it works (briefly)
+      Hyperparameters Optimization
+      Results
+    . IGANN
+      How it works (briefly) and how it is interpretable
+      Hyperparameters Optimization
+      Results
+  
+- Application (Peter):
+    . Current state, how it works
+    . How it will look like:
+        Feature: choosing a model (method)
+        Feature: compare the results of two different models (methods)
+        Feature: choose a single turbine / whole wind farm
+        
+  
