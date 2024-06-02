@@ -30,7 +30,7 @@ _____________________________________
 - Introduction (Petr Kh.):
   - Current state of affairs, overview
   - Introducing the dataset, Feature Selection & Technical/Physical infos (+ graphic with linreg)
-  - Pre-Processing (1-6 rows for hourly predictions)
+  - Pre-Processing (6 rows for hourly predictions)
   - A brief literature overview (research trends, approaches)
   - Challenges
 
