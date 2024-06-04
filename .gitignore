@@ -13,3 +13,11 @@ test.*
 # Mac OS
 .DS_Store
 
+# Models & IGANN
+models/
+igann/
+
+# Code editor config
+.idea/
+.vscode/
+pyrightconfig.json
