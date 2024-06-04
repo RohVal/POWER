@@ -10,7 +10,12 @@ from utils import save_model, split_data, cross_validation, log_metrics, evaluat
 
 
 def bayesian_optimization() -> dict:
-    """Perform hyperparameter tuning using Bayesian Optimization"""
+    """
+    Perform hyperparameter tuning using Bayesian Optimization.
+
+    Returns:
+        dict: the best hyperparameters
+    """
 
     best_model = XGBRegressor(booster="gbtree", colsample_bytree=0.8, learning_rate=0.01,
                               max_depth=7, min_child_weight=3, n_estimators=800, subsample=0.7, gamma=0.5, reg_lambda=2, alpha=0.5)
@@ -34,11 +39,21 @@ def bayesian_optimization() -> dict:
 
     # Get the best hyperparameters
     best_hyperparams = optimizer.max['params']
-    print(best_hyperparams)
+
+    return best_hyperparams
 
 
 def hyperparameter_tuning(X_train: pd.DataFrame, y_train: pd.Series) -> dict:
-    """Perform hyperparameter tuning"""
+    """P
+    Perform hyperparameter tuning using Grid Search.
+
+    Args:
+        X_train (pd.DataFrame): the training data
+        y_train (pd.Series): the target data
+
+    Returns:
+        dict: the best hyperparameters
+    """
 
     model = XGBRegressor(booster="gbtree", colsample_bytree=0.8, learning_rate=0.01,
                          max_depth=7, min_child_weight=3, n_estimators=800, subsample=0.7, gamma=0.5, reg_lambda=2, alpha=0.5)
@@ -65,6 +80,24 @@ def hyperparameter_tuning(X_train: pd.DataFrame, y_train: pd.Series) -> dict:
 
 
 def objective_function(colsample_bytree, learning_rate, max_depth, min_child_weight, n_estimators, subsample, gamma, reg_lambda, alpha):
+    """
+    Objective function for hyperparameter tuning using Bayesian Optimization.
+
+    Args:
+        colsample_bytree (float): the fraction of features to be randomly sampled for each tree
+        learning_rate (float): the learning rate
+        max_depth (float): the maximum depth of the tree
+        min_child_weight (float): the minimum sum of instance weight needed in a child
+        n_estimators (float): the number of trees
+        subsample (float): the fraction of samples to be randomly sampled for each tree
+        gamma (float): the minimum loss reduction required to make a further partition on a leaf node of the tree
+        reg_lambda (float): the L2 regularization term on weights
+        alpha (float): the L1 regularization term on weights
+
+    Returns:
+        float: the mean of the negative mean squared error scores
+    """
+
     model = XGBRegressor(booster="gbtree", colsample_bytree=colsample_bytree, learning_rate=learning_rate,
                          max_depth=int(max_depth), min_child_weight=min_child_weight, n_estimators=int(n_estimators), subsample=subsample, gamma=gamma, reg_lambda=reg_lambda, alpha=alpha)
 
@@ -77,7 +110,16 @@ def objective_function(colsample_bytree, learning_rate, max_depth, min_child_wei
 
 
 def plot_feature_importance(model: XGBRegressor, X: pd.DataFrame) -> None:
-    """Plot feature importance as bar chart"""
+    """
+    Plot the feature importance of the model.
+
+    Args:
+        model (XGBRegressor): the trained model
+        X (pd.DataFrame): the features
+
+    Returns:
+        None
+    """
 
     feature_importance = model.feature_importances_
     feature_names = X.columns
@@ -85,7 +127,17 @@ def plot_feature_importance(model: XGBRegressor, X: pd.DataFrame) -> None:
     plt.show()
 
 
-def plot_temperature_vs_power(path: str):
+def plot_temperature_vs_power(path: str) -> None:
+    """
+    Plot the temperature vs power.
+
+    Args:
+        path (str): the path to the dataset
+
+    Returns:
+        None
+    """
+
     df = pd.read_csv(path)
     df = df[df['Power (kW)'] < 0]
     plt.scatter(df['Nacelle ambient temperature (°C)'], df['Power (kW)'])
@@ -95,7 +147,17 @@ def plot_temperature_vs_power(path: str):
     plt.show()
 
 
-def plot_wind_speed_vs_power(path: str):
+def plot_wind_speed_vs_power(path: str) -> None:
+    """
+    Plot the wind speed vs power.
+
+    Args:
+        path (str): the path to the dataset
+
+    Returns:
+        None
+    """
+
     df = pd.read_csv(path)
     plt.scatter(df['Wind speed (m/s)'], df['Power (kW)'])
     plt.xlabel("Wind Speed (m/s)")
@@ -105,7 +167,16 @@ def plot_wind_speed_vs_power(path: str):
 
 
 def train_model(X_train: pd.DataFrame, y_train: pd.Series) -> XGBRegressor:
-    """Train the model"""
+    """
+    Train the model.
+
+    Args:
+        X_train (pd.DataFrame): the training data
+        y_train (pd.Series): the target data
+
+    Returns:
+        XGBRegressor: the trained model
+    """
 
     # model = XGBRegressor(colsample_bytree=1, gamma=0.5, learning_rate=0.01,
     #                      max_depth=7, n_estimators=1350, subsample=0.7)

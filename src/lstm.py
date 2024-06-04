@@ -1,3 +1,4 @@
+from typing import Any
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from preprocessing import preprocess_data
 from keras.optimizers import Adam, RMSprop
@@ -11,7 +12,18 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from utils import log_metrics_json
 
 
-def create_model(X_train: pd.DataFrame, y_train: pd.DataFrame) -> tuple[any, any, dict]:
+def create_model(X_train: pd.DataFrame, y_train: pd.DataFrame) -> tuple[Any, Any, dict]:
+    """
+    Create a LSTM model.
+
+    Args:
+        X_train (pd.DataFrame): the training data
+        y_train (pd.DataFrame): the target data
+
+    Returns:
+        tuple: a tuple containing the model, the history of the model and the hyperparameters
+    """
+
     params_first_layer = {
         "units": 50,
         "dropout": 0,
@@ -62,7 +74,16 @@ def create_model(X_train: pd.DataFrame, y_train: pd.DataFrame) -> tuple[any, any
 
 
 def scale_data(train: pd.DataFrame, test: pd.DataFrame) -> tuple[StandardScaler, pd.DataFrame, pd.DataFrame]:
-    """Scale the data"""
+    """
+    Scale the data using the StandardScaler.
+
+    Args:
+        train (pd.DataFrame): the training data
+        test (pd.DataFrame): the testing data
+
+    Returns:
+        tuple: a tuple containing the scaler, the scaled training data and the scaled testing data
+    """
 
     # scale the data
     scaler = StandardScaler()
@@ -75,7 +96,16 @@ def scale_data(train: pd.DataFrame, test: pd.DataFrame) -> tuple[StandardScaler,
 
 
 def split_data(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.Series, pd.DataFrame, pd.Series]:
-    """Split the data into training and testing sets"""
+    """
+    Split the data into training and testing sets. The training set contains of the first
+    70% of the data and the testing set contains the remaining 30%.
+
+    Args:
+        df (pd.DataFrame): the data to split
+
+    Returns:
+        tuple: a tuple containing the training and testing data
+    """
 
     # split the data
     X, y = df.drop(columns=["Power (kW)"]), df["Power (kW)"]
@@ -85,7 +115,19 @@ def split_data(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.Series, pd.DataFrame,
     return X_train, y_train, X_test, y_test
 
 
-def transform(dataset: pd.DataFrame, timestep: int = 6):
+def transform(dataset: pd.DataFrame, timestep: int = 6) -> tuple[np.ndarray, np.ndarray]:
+    """
+    Transform the data into a format that can be used by the LSTM model. The data is transformed
+    into a 3D array. The first dimension represents the number of samples, the second dimension
+    represents the number of timesteps and the third dimension represents the number of features.
+
+    Args:
+        dataset (pd.DataFrame): the data to transform
+        timestep (int): the number of timesteps to use
+
+    Returns:
+        tuple: a tuple containing the transformed data
+    """
 
     X, y = [], []
     for i in range(len(dataset)):

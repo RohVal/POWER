@@ -3,7 +3,15 @@ from re import findall
 
 
 def format_header(filename: str) -> None:
-    """format the header of the csv file to have double quotes encapsulating each column name"""
+    """
+    This function reads the header of a csv file, formats it and writes it back to the file.
+
+    Args:
+        filename (str): the name of the csv file to format the header of
+
+    Returns:
+        None
+    """
 
     with open(filename, mode="r") as file:
         header = file.readline()
@@ -28,6 +36,7 @@ def format_header(filename: str) -> None:
         # join the columns back together, except the last one which contains a newline character
         header = ",".join(header[:-1])
 
+    # write the formatted header back to the file along with the rows
     with open(filename, mode="w") as file:
         file.write(header)
         file.write("\n")
