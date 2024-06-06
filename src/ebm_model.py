@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from utils import save_model, split_data
 
-from interpret.glassbox import ExplainableBoostingClassifier
+from interpret.glassbox import ExplainableBoostingRegressor
 from interpret import show
 
 df = preprocess_data(path="../dataset/Turbine_Data_Kelmarsh_1_2022-01-01_-_2023-01-01_228.csv")
@@ -16,6 +16,6 @@ df = df.drop(columns=['Date and time'])
 
 X_train, X_test, y_train, y_test = split_data(df=df)
 
-ebm = ExplainableBoostingClassifier()
+ebm = ExplainableBoostingRegressor()
 ebm.fit(X_train, y_train)
-# show(ebm.explain_global())
+show(ebm.explain_global())
