@@ -41,6 +41,8 @@ _____________________________________
   - LSTM
     - Hyperparameters Optimization
     - Results
+  - EBM
+    - Results
   - IGANN
     - (how it is interpretable)
     - Hyperparameters Optimization
