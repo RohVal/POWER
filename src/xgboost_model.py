@@ -221,20 +221,24 @@ if __name__ == "__main__":
     scores = evaluate_model(model, X_test, y_test)
     print(scores)
 
-    # bayesian_optimization()
+    # params = bayesian_optimization()
+    # print(params)
+
+    # scale the data
+    X_train, X_test, scaler = scale_data(X_train, X_test)
 
     # best model I've found using bayesian optimization and some manual tuning
     params = {
-        "alpha": 0.2,
+        "alpha": 0.1,
         "booster": "gbtree",
-        "colsample_bytree": 0.8,
-        "gamma": 0.7,
+        "colsample_bytree": 0.7,
+        "gamma": 0.3,
         "learning_rate": 0.005,
-        "max_depth": 6,
+        "max_depth": 5,
         "min_child_weight": 2,
-        "n_estimators": 1000,
-        "reg_lambda": 3,
-        "subsample": 0.8
+        "n_estimators": 2000,
+        "reg_lambda": 0.6,
+        "subsample": 0.5
     }
 
     model = XGBRegressor(**params)
