@@ -253,9 +253,9 @@ def xgboost_model_tuned(X_train: pd.DataFrame, y_train: pd.Series) -> XGBRegress
         XGBRegressor: The trained XGBoost model
     """
 
-    model = XGBRegressor(alpha=0.2, booster="gbtree", colsample_bytree=0.8, gamma=0.7,
-                         learning_rate=0.005, max_depth=6, min_child_weight=2,
-                         n_estimators=1000, reg_lambda=3, subsample=0.8,
+    model = XGBRegressor(alpha=0.1, booster="gbtree", colsample_bytree=0.7, gamma=0.3,
+                         learning_rate=0.005, max_depth=5, min_child_weight=2,
+                         n_estimators=2000, reg_lambda=0.6, subsample=0.5,
                          random_state=RANDOM_STATE)
     model.fit(X_train, y_train)
 
@@ -316,4 +316,4 @@ if __name__ == "__main__":
     print(benchmark_results_turbine_1)
     print(benchmark_results_turbine_2)
 
-    plot_results(benchmark_results_turbine_1, benchmark_results_turbine_2, "R2")
+    plot_results(benchmark_results_turbine_1, benchmark_results_turbine_2, "RMSE")
