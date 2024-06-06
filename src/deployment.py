@@ -2,7 +2,8 @@ import gradio as gr
 from utils import load_model
 import pandas as pd
 
-model = load_model("xgboost.pkl")
+model_xgboost = load_model("xgboost.pkl")
+model_grid = load_model("xgboost-grid.pkl")
 
 CONTINUOUS_FEATURES = ["Wind speed (m/s)", "Wind speed - Maximum (m/s)", "Wind speed - Minimum (m/s)",
                        "Nacelle ambient temperature (°C)"]
@@ -65,5 +66,17 @@ examples = [
     [5, 7, 4, 10, 'W'],
 ]
 
+# # Launch the interface- original 
+# gr.Interface(fn=predict_power, inputs=inputs, outputs=outputs, examples=examples).launch()
+
+# Tabs for different models
+with gr.Blocks() as demo:
+    with gr.Tab(label="Grid Model"):
+        gr.Interface(fn=lambda wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction: predict_power(model_grid, wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction), 
+                     inputs=inputs, outputs=outputs, examples=examples)
+    with gr.Tab(label="XGBoost Model"):
+        gr.Interface(fn=lambda wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction: predict_power(model_xgboost, wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction), 
+                     inputs=inputs, outputs=outputs, examples=examples)
+
 # Launch the interface
-gr.Interface(fn=predict_power, inputs=inputs, outputs=outputs, examples=examples).launch()
+demo.launch()
