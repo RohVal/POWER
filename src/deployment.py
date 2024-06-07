@@ -4,6 +4,7 @@ import pandas as pd
 
 model_xgboost = load_model("xgboost.pkl")
 model_grid = load_model("xgboost-grid.pkl")
+model_ebm = load_model("/content/drive/MyDrive/BI /first prototype/ebm_model.pkl")
 
 CONTINUOUS_FEATURES = ["Wind speed (m/s)", "Wind speed - Maximum (m/s)", "Wind speed - Minimum (m/s)",
                        "Nacelle ambient temperature (°C)"]
@@ -76,6 +77,9 @@ with gr.Blocks() as demo:
                      inputs=inputs, outputs=outputs, examples=examples)
     with gr.Tab(label="XGBoost Model"):
         gr.Interface(fn=lambda wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction: predict_power(model_xgboost, wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction), 
+                     inputs=inputs, outputs=outputs, examples=examples)
+    with gr.Tab(label="EB Model"):
+        gr.Interface(fn=lambda wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction: predict_power(model_ebm, wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction),
                      inputs=inputs, outputs=outputs, examples=examples)
 
 # Launch the interface
