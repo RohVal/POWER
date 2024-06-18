@@ -7,3 +7,5 @@
 [] Output: in kWh
 [] something that tells the user that the power generated is for one hour 
 [] Accuracy: 
+[] Weather api gives insight for the last 7 days. We use this data to make a weekly dashboard.
+[] Talk to EBM/ Chatbot solution. 
