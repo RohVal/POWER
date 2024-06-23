@@ -166,11 +166,13 @@ def preprocess_data(path: str) -> pd.DataFrame:
                "Wind speed - Maximum (m/s)", "Wind speed - Minimum (m/s)",
                "Nacelle ambient temperature (°C)", "Power (kW)"]
     df = remove_columns_except(columns=columns, df=df)
-    df = combine_values_hourly(df=df)
+    df = winsorize_power(df=df)
+    df = winsorize_wind_speed(df=df)
     df = handle_missing_values(df=df)
+    df = handle_missing_temperatures(df=df)
+    df = combine_values_hourly(df=df)
     df = map_wind_direction(df=df)
     df = encode_wind_direction(df=df)
-    df = winsorize_power(df=df)
     df = remove_outliers(df=df, cut_in_speed=3.0)
 
     return df
