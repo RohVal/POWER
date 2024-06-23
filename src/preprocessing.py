@@ -214,4 +214,22 @@ def winsorize_power(df, max_power=2050):
     return df
 
 
+def winsorize_wind_speed(df: pd.DataFrame):
+    """
+    Winsorizes wind speed data (wind speed, wind speed maximum, wind speed minimum)
+    within a pandas DataFrame.
+
+    Args:
+        df (pd.DataFrame): DataFrame containing wind speed data.
+
+    Returns:
+        pd.DataFrame: DataFrame with winsorized data.
+    """
+
+    df["Wind speed (m/s)"] = df["Wind speed (m/s)"].clip(lower=0)
+    df["Wind speed - Maximum (m/s)"] = df["Wind speed - Maximum (m/s)"].clip(lower=0)
+    df["Wind speed - Minimum (m/s)"] = df["Wind speed - Minimum (m/s)"].clip(lower=0)
+
+    return df
+
 # TODO instead of rolling mean, try using interpolation
