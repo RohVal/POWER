@@ -74,11 +74,27 @@ def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
 
     # fill missing values in the columns with the rolling mean
     columns = ["Wind speed (m/s)", "Wind speed - Maximum (m/s)",
-               "Wind speed - Minimum (m/s)", "Nacelle ambient temperature (°C)"]
+               "Wind speed - Minimum (m/s)"]
 
     for column in columns:
         df.loc[:, column] = df[column].fillna(df[column].rolling(
             window=10, min_periods=2, center=True).mean())
+
+    return df
+
+
+def handle_missing_temperatures(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Handle missing temperature values in the DataFrame by using interpolation.
+
+    Args:
+        df (pd.DataFrame): DataFrame containing the data
+
+    Returns:
+        pd.DataFrame: DataFrame with missing temperature values filled with interpolation
+    """
+
+    df['Nacelle ambient temperature (°C)'] = df['Nacelle ambient temperature (°C)'].interpolate()
 
     return df
 
