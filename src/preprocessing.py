@@ -30,6 +30,9 @@ def combine_values_hourly(df: pd.DataFrame) -> pd.DataFrame:
     df = df.resample('h').mean()
     df.reset_index(inplace=True)
 
+    # drop rows with missing power values, as they are the target values
+    df = df.dropna(subset=['Power (kW)'])
+
     return df
 
 
