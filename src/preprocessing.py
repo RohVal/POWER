@@ -30,6 +30,9 @@ def combine_values_hourly(df: pd.DataFrame) -> pd.DataFrame:
     df = df.resample('h').mean()
     df.reset_index(inplace=True)
 
+    # drop rows with missing power values, as they are the target values
+    df = df.dropna(subset=['Power (kW)'])
+
     return df
 
 
@@ -74,11 +77,27 @@ def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
 
     # fill missing values in the columns with the rolling mean
     columns = ["Wind speed (m/s)", "Wind speed - Maximum (m/s)",
-               "Wind speed - Minimum (m/s)", "Nacelle ambient temperature (°C)"]
+               "Wind speed - Minimum (m/s)"]
 
     for column in columns:
         df.loc[:, column] = df[column].fillna(df[column].rolling(
             window=10, min_periods=2, center=True).mean())
+
+    return df
+
+
+def handle_missing_temperatures(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Handle missing temperature values in the DataFrame by using interpolation.
+
+    Args:
+        df (pd.DataFrame): DataFrame containing the data
+
+    Returns:
+        pd.DataFrame: DataFrame with missing temperature values filled with interpolation
+    """
+
+    df['Nacelle ambient temperature (°C)'] = df['Nacelle ambient temperature (°C)'].interpolate()
 
     return df
 
@@ -150,11 +169,13 @@ def preprocess_data(path: str) -> pd.DataFrame:
                "Wind speed - Maximum (m/s)", "Wind speed - Minimum (m/s)",
                "Nacelle ambient temperature (°C)", "Power (kW)"]
     df = remove_columns_except(columns=columns, df=df)
-    df = combine_values_hourly(df=df)
+    df = winsorize_power(df=df)
+    df = winsorize_wind_speed(df=df)
     df = handle_missing_values(df=df)
+    df = handle_missing_temperatures(df=df)
+    df = combine_values_hourly(df=df)
     df = map_wind_direction(df=df)
     df = encode_wind_direction(df=df)
-    df = winsorize_power(df=df)
     df = remove_outliers(df=df, cut_in_speed=3.0)
 
     return df
@@ -213,5 +234,23 @@ def winsorize_power(df, max_power=2050):
 
     return df
 
+
+def winsorize_wind_speed(df: pd.DataFrame):
+    """
+    Winsorizes wind speed data (wind speed, wind speed maximum, wind speed minimum)
+    within a pandas DataFrame.
+
+    Args:
+        df (pd.DataFrame): DataFrame containing wind speed data.
+
+    Returns:
+        pd.DataFrame: DataFrame with winsorized data.
+    """
+
+    df["Wind speed (m/s)"] = df["Wind speed (m/s)"].clip(lower=0)
+    df["Wind speed - Maximum (m/s)"] = df["Wind speed - Maximum (m/s)"].clip(lower=0)
+    df["Wind speed - Minimum (m/s)"] = df["Wind speed - Minimum (m/s)"].clip(lower=0)
+
+    return df
 
 # TODO instead of rolling mean, try using interpolation
