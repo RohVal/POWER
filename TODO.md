@@ -13,6 +13,18 @@
 [] r2 scores
 
 ### Report
+[] EBM related stuff for report
 
 
 ### Presentation
+[] EBM related stuff for report
+
+### Model related stuff 
+[] SHAP
+
+
+
+### meeting
+
+- link shared by Niko
+    - https://zenodo.org/records/5841834
