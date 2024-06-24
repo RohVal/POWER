@@ -1,3 +1,4 @@
+### Webapp 
 [x] Feature Fields with slider for wind speed, max, min and temperature.
 [] The user inputs windspeed(incl. max and min) in km/h only for frontend
 [x] For wind direction: dropdown or radio buttons
@@ -9,3 +10,9 @@
 [] Accuracy: 
 [x] Weather api gives insight for the last 7 days. We use this data to make a weekly dashboard.
 [] Talk to EBM/ Chatbot solution. 
+[] r2 scores
+
+### Report
+
+
+### Presentation
