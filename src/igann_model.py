@@ -27,13 +27,13 @@ def hyperparameter_tuning(X_train: pd.DataFrame, y_train: pd.Series) -> dict:
     model = IGANNRegressor(random_state=42)
 
     params = {
-        "act": [torch.nn.Tanh()],
-        "boost_rate": [0.2],
+        "act": ["elu"],
+        "boost_rate": [0.1],
         "early_stopping": [50],
         "elm_alpha": [1],
-        "elm_scale": [1],
-        "init_reg": [10],
-        "n_estimators": [5000],
+        "elm_scale": [5],
+        "init_reg": [1, 5, 10],
+        "n_estimators": [3000],
         "n_hid": [20],
         "random_state": [42],
     }
@@ -85,24 +85,28 @@ if __name__ == "__main__":
 
     # scale the data
     scaler, X_train, X_test = scale_data(X_test=X_test, X_train=X_train)
-    y_train = (y_train - y_train.mean()) / y_train.std()
-    y_test = (y_test - y_test.mean()) / y_test.std()
+
+    # store the scaler
+    save_model(scaler, "scaler.pkl")
+
+    target_scaler = StandardScaler()
+    y_train = target_scaler.fit_transform(y_train.values.reshape(-1, 1)).ravel()
+    y_test = target_scaler.transform(y_test.values.reshape(-1, 1)).ravel()
 
     # hyperparameter tuning
     # params = hyperparameter_tuning(X_train, y_train)
     # print(params)
 
-    # best parameters for now
     params = {
-        "act": torch.nn.Tanh(),
-        "boost_rate": 0.2,
-        "early_stopping": 50,
-        "elm_alpha": 1,
-        "elm_scale": 1,
-        "init_reg": 10,
-        "n_estimators": 5000,
-        "n_hid": 70,
-        "random_state": 42,
+        'act': 'elu',
+        'boost_rate': 0.1,
+        'early_stopping': 50,
+        'elm_alpha': 1,
+        'elm_scale': 5,
+        'init_reg': 1,
+        'n_estimators': 3000,
+        'n_hid': 20,
+        'random_state': 42
     }
 
     # create the model
