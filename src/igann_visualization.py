@@ -29,12 +29,13 @@ def generate_better_plots(model: IGANN, features: dict[str, float], shape_functi
     values = []
 
     for feature, value in features.items():
-        shape_func = next(x for x in shape_func_list if x["name"] == feature)
-        sns.set(style="whitegrid")
+        shape_func = next(x for x in shape_functions if x["name"] == feature)
         fig, ax = plt.subplots()
         sns.lineplot(x=shape_func["x"], y=shape_func["y"], ax=ax, linewidth=2, color="darkblue")
 
+        # Find the y-value for the input value using interpolation
         y_val = np.interp(value, shape_func["x"], shape_func["y"])
+        values.append(y_val)
 
         # Add a marker at the input value with annotation
         ax.plot(value, y_val, marker="s", markersize=8, color="black")
@@ -42,10 +43,9 @@ def generate_better_plots(model: IGANN, features: dict[str, float], shape_functi
                     textcoords="offset points", xytext=(10, 10), ha='left', va='bottom',
                     bbox=dict(boxstyle="round,pad=0.2", fc="white", alpha=0.8))
 
-
         # Customize plot appearance to match the reference
-        ax.axhline(0, color="black", linestyle="--", linewidth=0.8)  # Horizontal line at y=0
-        ax.set_xlabel("x")  # X-axis label
+        ax.axhline(1, color="black", linestyle="--", linewidth=0.8)  # Horizontal line at y=0
+        ax.set_xlabel(feature)  # X-axis label
         ax.set_ylabel("")   # Remove y-axis label
         ax.set_title(f"{feature}:\n{shape_func['avg_effect']:.2f}%")  # Add title
         ax.tick_params(axis='both', which='major', labelsize=10)  # Adjust tick label size
@@ -110,8 +110,7 @@ def magic_stuff(model: any, scaler: any) -> None:
     fig, ax = plt.subplots()
     sns.lineplot(x=shape_func["x"], y=shape_func["y"], ax=ax, linewidth=2, color="darkblue")
 
-    # Find the y-value for the input value using interpolation
-    y_val = np.interp(input_value, shape_func["x"], shape_func["y"])
+    return values
 
     # Add a marker at the input value with annotation
     ax.plot(input_value, y_val, marker="s", markersize=8, color="black")
@@ -142,14 +141,26 @@ if __name__ == "__main__":
 
     # model.plot_single(show_n=4)
 
+    # load all pkl files
+    model = load_model("igann.pkl")
+    feature_scaler, target_scaler = load_scalers()
     xgboost = load_model("xgboost.pkl")
 
     # load dataset
     df = preprocess_data(
         path="../dataset/Turbine_Data_Kelmarsh_1_2022-01-01_-_2023-01-01_228.csv")
-
     df = df.drop(columns=["Date and time"])
     X_train, X_test, y_train, y_test = split_data(df=df)
+    first_entry = X_test.iloc[[2]]
+
+    # scale the features
+    features = scale_features(scaler=feature_scaler, features=first_entry)
+
+    # get the shape functions
+    shape_functions = model.get_shape_functions_as_dict()
+
+    # do the plotting
+    values = generate_better_plots(model=model, features=features, shape_functions=shape_functions)
 
     first_entry = X_test.iloc[[0]]
     y_train_mean = y_train.mean()
