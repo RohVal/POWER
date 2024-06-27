@@ -5,10 +5,28 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from igann import IGANN
+from utils import load_model
 
 
-def generate_better_plots(model: IGANN, features: dict[str, float]) -> None:
-    shape_func_list = model.get_shape_functions_as_dict()
+def load_scalers() -> tuple:
+    feature_scaler = load_model("feature_scaler.pkl")
+    target_scaler = load_model("target_scaler.pkl")
+
+    return feature_scaler, target_scaler
+
+
+def scale_features(scaler: any, features: pd.DataFrame) -> dict:
+    features_scaled = features.copy()
+    features_scaled.iloc[:, :4] = scaler.transform(features_scaled.iloc[:, :4])
+    features_as_dict = features_scaled.to_dict()
+    features = dict(map(lambda item: (item[0], list(item[1].values())[0]), features_as_dict.items()))
+
+    return features
+
+
+def generate_better_plots(model: IGANN, features: dict[str, float], shape_functions: any) -> list:
+
+    values = []
 
     for feature, value in features.items():
         shape_func = next(x for x in shape_func_list if x["name"] == feature)
