@@ -2,7 +2,7 @@ from preprocessing import preprocess_data
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from igann import IGANN, IGANNRegressor
-from utils import split_data, cross_validation, evaluate_model, log_metrics
+from utils import split_data, cross_validation, evaluate_model, log_metrics, save_model
 from sklearn.model_selection import GridSearchCV
 import torch
 
@@ -86,12 +86,14 @@ if __name__ == "__main__":
     # scale the data
     scaler, X_train, X_test = scale_data(X_test=X_test, X_train=X_train)
 
-    # store the scaler
-    save_model(scaler, "scaler.pkl")
-
     target_scaler = StandardScaler()
     y_train = target_scaler.fit_transform(y_train.values.reshape(-1, 1)).ravel()
     y_test = target_scaler.transform(y_test.values.reshape(-1, 1)).ravel()
+
+    # save the scalers
+    save_model(scaler, "feature_scaler.pkl")
+    save_model(target_scaler, "target_scaler.pkl")
+
 
     # hyperparameter tuning
     # params = hyperparameter_tuning(X_train, y_train)
