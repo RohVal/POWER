@@ -69,7 +69,7 @@ def scale_data(X_test: pd.DataFrame, X_train: pd.DataFrame) -> tuple[StandardSca
     X_train_scaled.iloc[:, :4] = scaler.fit_transform(X_train_scaled.iloc[:, :4])
     X_test_scaled.iloc[:, :4] = scaler.transform(X_test_scaled.iloc[:, :4])
 
-    return scaler, X_train, X_test
+    return scaler, X_train_scaled, X_test_scaled
 
 
 if __name__ == "__main__":
