@@ -11,6 +11,52 @@ import seaborn as sns
 from igann import IGANN
 from utils import load_model
 
+FILENAMES = {
+    "Wind speed (m/s)": "wind_speed",
+    "Wind speed - Maximum (m/s)": "wind_speed_max",
+    "Wind speed - Minimum (m/s)": "wind_speed_min",
+    "Nacelle ambient temperature (°C)": "temperature",
+    "N/NE": "n_ne",
+    "E/NE": "e_ne",
+    "E/SE": "e_se",
+    "S/SE": "s_se",
+    "S/SW": "s_sw",
+    "W/SW": "w_sw",
+    "W/NW": "w_nw",
+    "N/NW": "n_nw",
+}
+
+
+def clear_directory(directory: str) -> None:
+    # remove all .png files from the directory
+    for file in listdir(directory):
+        if file.endswith(".png"):
+            remove(join(directory, file))
+
+
+def generate_feature_plot(feature: str, feature_val: float, shape_func: Any, y_val: float) -> Figure:
+    fig, ax = plt.subplots()
+    sns.lineplot(x=shape_func["x"], y=shape_func["y"], ax=ax, linewidth=2, color="darkblue")
+
+    # Add a marker at the input value with annotation
+    ax.plot(feature_val, y_val, marker="s", markersize=8, color="black")
+    ax.annotate(f"({feature_val:.1f}, {y_val:.4f})", (feature_val, y_val),
+                textcoords="offset points", xytext=(10, 10), ha='left', va='bottom',
+                bbox=dict(boxstyle="round,pad=0.2", fc="white", alpha=0.8))
+
+    # Customize plot appearance to match the reference
+    ax.axhline(1, color="black", linestyle="--", linewidth=0.8)  # Horizontal line at y=0
+    ax.set_xlabel(feature)  # X-axis label
+    ax.set_ylabel("")   # Remove y-axis label
+    ax.set_title(f"{feature}:\n{shape_func['avg_effect']:.2f}%")  # Add title
+    ax.tick_params(axis='both', which='major', labelsize=10)  # Adjust tick label size
+    sns.despine(left=True, bottom=True)  # Remove top and right spines
+
+    # Add gridlines
+    ax.grid(axis='both', linestyle='-', linewidth=0.5, color='lightgray')
+
+    return fig
+
 
 def load_scalers() -> tuple:
     feature_scaler = load_model("feature_scaler.pkl")
@@ -19,7 +65,39 @@ def load_scalers() -> tuple:
     return feature_scaler, target_scaler
 
 
-def scale_features(scaler: any, features: pd.DataFrame) -> dict:
+def make_prediction(clear_plots_dir: bool, features: dict[str, float], model: IGANN, shape_functions: Any) -> float:
+
+    shape_function_values = []
+
+    inti = 0
+
+    if clear_plots_dir:
+        # Clear the plots directory
+        clear_directory("../plots")
+
+    for feature, value in features.items():
+        # Find the shape function for the feature
+        shape_func = next(x for x in shape_functions if x["name"] == feature)
+        # Find the y-value for the input value using interpolation
+        y_val = np.interp(value, shape_func["x"], shape_func["y"])
+        # Add the y-value to the list
+        shape_function_values.append(y_val)
+
+        # generate the plot
+        fig = generate_feature_plot(feature=feature, feature_val=value, shape_func=shape_func, y_val=y_val)
+
+        inti += 1
+        # save the plot
+        if FILENAMES.get(feature):
+            fig.savefig(f"../plots/{FILENAMES[feature]}.png")
+            continue
+
+        fig.savefig(f"../plots/{feature.lower()}.png")
+
+    return sum(shape_function_values)
+
+
+def scale_features(scaler: Any, features: pd.DataFrame) -> dict:
     features_scaled = features.copy()
     features_scaled.iloc[:, :4] = scaler.transform(features_scaled.iloc[:, :4])
     features_as_dict = features_scaled.to_dict()
@@ -83,8 +161,12 @@ if __name__ == "__main__":
     # get the shape functions
     shape_functions = model.get_shape_functions_as_dict()
 
-    # do the plotting
-    values = generate_better_plots(model=model, features=features, shape_functions=shape_functions)
+    # make the prediction
+    prediction = make_prediction(clear_plots_dir=True, features=features, model=model, shape_functions=shape_functions)
+
+    # inverse transform the prediction
+    prediction = target_scaler.inverse_transform([[prediction]])
+    print(f"Predicted value: {prediction}")
 
 
     features_as_dict = pd.DataFrame(features, index=[0])
