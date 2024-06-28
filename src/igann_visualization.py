@@ -97,7 +97,3 @@ if __name__ == "__main__":
 
     pred_xgboost = xgboost.predict(first_entry)
     print(f"Predicted value using XGBoost: {pred_xgboost}")
-
-
-    first_row = X_train
-    print(first_row.describe())
