@@ -28,7 +28,7 @@ def scale_features(scaler: any, features: pd.DataFrame) -> dict:
     return features
 
 
-def generate_better_plots(model: IGANN, features: dict[str, float], shape_functions: any) -> list:
+def generate_better_plots(model: IGANN, features: dict[str, float], shape_functions: Any) -> list:
 
     values = []
 
