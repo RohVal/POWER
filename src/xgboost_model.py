@@ -198,70 +198,24 @@ if __name__ == "__main__":
     # global X_train, X_test, y_train, y_test
     X_train, X_test, y_train, y_test = split_data(df=df)
 
-    # best model I've found using grid search and some manual tuning
     params = {
-        "alpha": 0.5,
+        "alpha": 0,
         "booster": "gbtree",
-        "colsample_bytree": 0.8,
-        "gamma": 0.5,
+        "colsample_bytree": 1,
+        "gamma": 0,
         "learning_rate": 0.01,
         "max_depth": 7,
-        "min_child_weight": 3,
-        "n_estimators": 800,
+        "min_child_weight": 2,
+        "n_estimators": 1000,
         "reg_lambda": 2,
         "subsample": 0.7
     }
 
-
-    model = XGBRegressor(**params)
+    model = XGBRegressor(random_state=42, **params)
     model.fit(X_train, y_train)
-    metrics = cross_validation(model, X_test, y_test)
-    log_metrics(params, metrics, "xgboost")
 
-    scores = evaluate_model(model, X_test, y_test)
-    print(scores)
-
-    # params = bayesian_optimization()
-    # print(params)
-
-    # scale the data
-    X_train, X_test, scaler = scale_data(X_train, X_test)
-
-    # best model I've found using bayesian optimization and some manual tuning
-    params = {
-        "alpha": 0.1,
-        "booster": "gbtree",
-        "colsample_bytree": 0.7,
-        "gamma": 0.3,
-        "learning_rate": 0.005,
-        "max_depth": 5,
-        "min_child_weight": 2,
-        "n_estimators": 2000,
-        "reg_lambda": 0.6,
-        "subsample": 0.5
-    }
-
-    model = XGBRegressor(**params)
-    model.fit(X_train, y_train)
     metrics = cross_validation(model, X_train, y_train)
     log_metrics(params, metrics, "xgboost")
 
     scores = evaluate_model(model, X_test, y_test)
     print(scores)
-
-
-    # save the model
-    save_model(model, "xgboost.pkl")
-
-    model = XGBRegressor(booster="gbtree", n_estimators=5,
-                         learning_rate=0.6, max_depth=3, random_state=42)
-    model.fit(X_train, y_train)
-    metrics = cross_validation(model, X_test, y_test)
-    print(metrics)
-
-    # plot the feature importance
-    plot_feature_importance(model, X_train)
-
-    # plot single xgboost tree
-    plot_tree(model)
-    plt.show()
