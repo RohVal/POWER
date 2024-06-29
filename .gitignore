@@ -21,3 +21,6 @@ igann/
 .idea/
 .vscode/
 pyrightconfig.json
+
+# plots
+plots/
