@@ -14,7 +14,7 @@ test.*
 .DS_Store
 
 # Models & IGANN
-models/
+#models/
 igann/
 
 # Code editor config
