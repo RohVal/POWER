@@ -71,8 +71,6 @@ def make_prediction(clear_plots_dir: bool, features: dict[str, float], model: IG
 
     shape_function_values = []
 
-    inti = 0
-
     if clear_plots_dir:
         # Clear the plots directory
         clear_directory("../plots")
@@ -88,7 +86,6 @@ def make_prediction(clear_plots_dir: bool, features: dict[str, float], model: IG
         # generate the plot
         fig = generate_feature_plot(feature=feature, feature_val=value, shape_func=shape_func, y_val=y_val)
 
-        inti += 1
         # save the plot
         if FILENAMES.get(feature):
             fig.savefig(f"../plots/{FILENAMES[feature]}.png")
