@@ -9,7 +9,9 @@ import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 import seaborn as sns
 from igann import IGANN
-from utils import load_model
+from utils import load_model, evaluate_model
+from sklearn.preprocessing import StandardScaler
+from igann_model import scale_data
 
 FILENAMES = {
     "Wind speed (m/s)": "wind_speed",
@@ -94,7 +96,7 @@ def make_prediction(clear_plots_dir: bool, features: dict[str, float], model: IG
 
         fig.savefig(f"../plots/{feature.lower()}.png")
 
-    return sum(shape_function_values)
+    return sum(shape_function_values) + model.init_classifier.intercept_
 
 
 def scale_features(scaler: Any, features: pd.DataFrame) -> dict:
