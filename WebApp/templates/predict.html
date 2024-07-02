@@ -11,6 +11,7 @@
             <option value="IGANN">IGANN</option>
             <option value="EBM">EBM </option>
             <option value="LSTM">LSTM </option>
+            <option value="All">All</option>
         </select><br>
         </div>
         
@@ -72,12 +73,33 @@
         </div>
     </div>
     </form>
-    {% if result is defined %}
+
+    {% if result %}
+        {% if model == 'all' %} 
+        <h4>Predictions for All Models</h4>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>Prediction</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for model_name, prediction in result.items() %}
+                    <tr>
+                        <td>{{ model_name }}</td>
+                        <td>{{ prediction }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
         <h3>The prediction is {{ result }}</h3>
+        {% if model == 'ebm' %}
         <iframe src= "{{ url_for('static', filename='/html/xyz.html') }}" height="1000" width="1400" title="Globalexplain"></iframe>
-    <!-- {% else %} -->
-    
-    
+        {% endif %}
+        {% endif %} 
     {% endif %}
 
 {% endblock %}
