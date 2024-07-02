@@ -42,7 +42,7 @@ def generate_feature_plot(feature: str, feature_val: float, shape_func: Any, y_v
 
     # Add a marker at the input value with annotation
     ax.plot(feature_val, y_val, marker="s", markersize=8, color="black")
-    ax.annotate(f"({feature_val:.1f}, {y_val:.4f})", (feature_val, y_val),
+    ax.annotate(f"({feature_val:.2f}, {y_val:.4f})", (feature_val, y_val),
                 textcoords="offset points", xytext=(10, 10), ha='left', va='bottom',
                 bbox=dict(boxstyle="round,pad=0.2", fc="white", alpha=0.8))
 
