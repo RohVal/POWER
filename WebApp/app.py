@@ -20,12 +20,17 @@ app = Flask(__name__)
 ebm_path = os.path.join(parent_directory, 'models', 'ebm.pkl')
 xgboost_path = os.path.join(parent_directory, 'models', 'xgboost.pkl')
 lstm_path = os.path.join(parent_directory, 'models', 'lstm.pkl')
-# igann_path = os.path.join(parent_directory, 'models', 'igann.pkl')
+igann_path = os.path.join(parent_directory, 'models', 'igann.pkl')
 
 with open(ebm_path, "rb") as f: 
     model_ebm = load(f)
 with open(xgboost_path, "rb") as f:
     model_xgboost = load(f)
+# with open(lstm_path, "rb") as f:
+#     model_lstm = load(f)
+# with open(igann_path, "rb") as f:
+#     model_igann = load(f)
+
 # with open(r"/WebApp/models/ebm_model.pkl", "rb") as f:
 #     model_ebm = load(f)
 
@@ -90,12 +95,6 @@ def index():
 @app.route('/predict', methods = ['GET','POST'])
 def predict():
 
-    # wind_speed = int(request.form.get("wspeed"))
-    # wind_speed_max = int(request.form.get("wspeed_max"))
-    # wind_speed_min = int(request.form.get("wspeed_min"))
-    # nacelle_temp = int(request.form.get("ntemp"))
-    # wind_direction = (request.form.get("wind_direction"))
-
     if request.method == "POST":
 
         wind_speed = int(request.form.get("wspeed"))
@@ -109,11 +108,15 @@ def predict():
             model = model_xgboost
         elif model_type == 'EBM':
             model = model_ebm
+        # elif model_type == 'IGANN':
+        #     model = model_igann
+        # elif model_type == 'LSTM':
+        #     model = model_lstm
         elif model_type == 'All':
             models = {
                 'XGBoost': model_xgboost,
-                'EBM': model_ebm
-                # 'IGANN' : model_igann
+                'EBM': model_ebm,
+                # 'IGANN' : model_igann,
                 # 'LSTM' : model_lstm
             }
             predictions = {}
