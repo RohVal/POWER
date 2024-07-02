@@ -77,16 +77,16 @@
     {% if result %}
         {% if model == 'all' %} 
         <h4>Predictions for All Models</h4>
-        <table border="1">
-            <thead>
+        <table class="table table-bordered table-hover table-sm">
+            <thead class="thead-dark">
                 <tr>
-                    <th>Model</th>
-                    <th>Prediction</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Prediction</th>
                 </tr>
             </thead>
             <tbody>
                 {% for model_name, prediction in result.items() %}
-                    <tr>
+                    <tr scope="row">
                         <td>{{ model_name }}</td>
                         <td>{{ prediction }}</td>
                     </tr>
