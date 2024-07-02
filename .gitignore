@@ -3,6 +3,7 @@
 /venv/
 /.env/
 /env/
+flenv/
 
 # Byte-compiled / optimized / DLL files
 src/__pycache__/
@@ -24,3 +25,7 @@ pyrightconfig.json
 
 # plots
 plots/
+
+
+models/igann.pkl:Zone.Identifier
+models/igann.pkl
