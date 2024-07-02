@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+    <h3>Power prediction per hour</h3>
+    <form action="{{ url_for("elocal")}}" method="post"> 
+    
+    <div class="row">
+        <div class="col" >
+            <label for="wind_speed">Wind speed (m/s):</label>
+            <input type="number" id="wind_speed" name="wspeed" step="1" required><br>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="wind_speed_max">Wind speed - Maximum (m/s):</label>
+            <input type="number" id="wind_speed_max" name="wspeed_max" step="1" required><br>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="wind_speed_min">Wind speed - Minimum (m/s):</label>
+            <input type="number" id="wind_speed_min" name="wspeed_min" step="0.01" required><br>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="nacelle_temp">Nacelle ambient temperature (°C):</label>
+            <input type="number" id="nacelle_temp" name="ntemp" step="0.1" required><br>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="wind_direction">Wind direction:</label>
+        <select id="wind_direction" name="wind_direction">
+            <option value="E">E</option>
+            <option value="E/NE">E/NE</option>
+            <option value="E/SE">E/SE</option>
+            <option value="N">N</option>
+            <option value="N/NE">N/NE</option>
+            <option value="N/NW">N/NW</option>
+            <option value="NE">NE</option>
+            <option value="NW">NW</option>
+            <option value="S">S</option>
+            <option value="S/SE">S/SE</option>
+            <option value="S/SW">S/SW</option>
+            <option value="SE">SE</option>
+            <option value="SW">SW</option>
+            <option value="W">W</option>
+            <option value="W/NW">W/NW</option>
+            <option value="W/SW">W/SW</option>
+        </select><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="submit">explain</button>
+        </div>
+    </div>
+    </form>
+
+    {% if result %}
+    <h1>EBM Explanations</h1>
+    <h4> {{pred}}</h4>
+    <div>
+        {{ plot_html|safe }}
+    </div>
+    <hr>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Explanation{% endblock %}
+{% block content %}
+<h1>EBM Global Explanation</h1>
+    {% for plot_html in plot_htmls %}
+    <div class="container">
+        <div class="row">
+            {{ plot_html|safe }}
+        </div>
+    </div>
+    <hr>
+    {% endfor %}
+{% endblock %}
