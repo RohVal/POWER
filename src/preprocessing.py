@@ -252,5 +252,3 @@ def winsorize_wind_speed(df: pd.DataFrame):
     df["Wind speed - Minimum (m/s)"] = df["Wind speed - Minimum (m/s)"].clip(lower=0)
 
     return df
-
-# TODO instead of rolling mean, try using interpolation

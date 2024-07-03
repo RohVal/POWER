@@ -19,11 +19,6 @@ def hyperparameter_tuning(X_train: pd.DataFrame, y_train: pd.Series) -> dict:
         dict: Best hyperparameters.
     """
 
-    # default parameters
-    # task="classification", n_hid=10, n_estimators=5000, boost_rate=0.1, init_reg=1,
-    # elm_scale=1, elm_alpha=1, sparse=0, act="elu", early_stopping=50, device="cpu",
-    # random_state=1, optimize_threshold=False, verbose=0
-
     model = IGANNRegressor(random_state=42)
 
     params = {
