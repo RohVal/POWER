@@ -30,6 +30,16 @@ FILENAMES = {
 
 
 def clear_directory(directory: str) -> None:
+    """
+    Remove all .png files from the directory.
+
+    Args:
+        directory: str: The directory to remove the .png files from.
+
+    Returns:
+        None
+    """
+
     # remove all .png files from the directory
     for file in listdir(directory):
         if file.endswith(".png"):
@@ -37,6 +47,20 @@ def clear_directory(directory: str) -> None:
 
 
 def generate_feature_plot(feature: str, feature_val: float, shape_func: Any, y_val: float) -> Figure:
+    """
+    Generate a plot of the shape function for a given feature, with a marker at the input value. The plot will also
+    include an annotation with the input value and the corresponding output value.
+
+    Args:
+        feature: str: The name of the feature.
+        feature_val: float: The input value for the feature.
+        shape_func: Any: The shape function for the feature.
+        y_val: float: The output value for the feature.
+
+    Returns:
+        Figure: The plot of the shape function.
+    """
+
     fig, ax = plt.subplots()
     sns.lineplot(x=shape_func["x"], y=shape_func["y"], ax=ax, linewidth=2, color="darkblue")
 
@@ -61,6 +85,13 @@ def generate_feature_plot(feature: str, feature_val: float, shape_func: Any, y_v
 
 
 def load_scalers() -> tuple:
+    """
+    Loads the feature and target scalers from the saved files.
+
+    Returns:
+        tuple: The feature and target scalers.
+    """
+
     feature_scaler = load_model("feature_scaler.pkl")
     target_scaler = load_model("target_scaler.pkl")
 
@@ -68,6 +99,19 @@ def load_scalers() -> tuple:
 
 
 def make_prediction(clear_plots_dir: bool, features: dict[str, float], model: IGANN, shape_functions: Any) -> float:
+    """
+    Make a prediction using the IGANN model and the input features. The function will generate a plot for each feature
+    and save it in the plots directory. The function will also return the prediction value.
+
+    Args:
+        clear_plots_dir: bool: Whether to clear the plots directory before generating the plots.
+        features: dict[str, float]: The input features.
+        model: IGANN: The IGANN model.
+        shape_functions: Any: The shape functions for the features.
+
+    Returns:
+        float: The prediction value.
+    """
 
     shape_function_values = []
 
@@ -97,6 +141,17 @@ def make_prediction(clear_plots_dir: bool, features: dict[str, float], model: IG
 
 
 def scale_features(scaler: Any, features: pd.DataFrame) -> dict:
+    """
+    Scale the input features using the provided scaler.
+
+    Args:
+        scaler: Any: The scaler to use for scaling the features.
+        features: pd.DataFrame: The input features.
+
+    Returns:
+        dict: The scaled features.
+    """
+
     features_scaled = features.copy()
     features_scaled.iloc[:, :4] = scaler.transform(features_scaled.iloc[:, :4])
     features_as_dict = features_scaled.to_dict()
@@ -106,6 +161,19 @@ def scale_features(scaler: Any, features: pd.DataFrame) -> dict:
 
 
 def generate_better_plots(model: IGANN, features: dict[str, float], shape_functions: Any) -> list:
+    """
+    Generate a plot of the shape function for a given feature, with a marker at the input value. The plot will also
+    include an annotation with the input value and the corresponding output value. This method is deprecated and
+    should not be used.
+
+    Args:
+        model: IGANN: The IGANN model.
+        features: dict[str, float]: The input features.
+        shape_functions: Any: The shape functions for the features.
+
+    Returns:
+        list: The list of values for each feature.
+    """
 
     values = []
 
@@ -124,18 +192,15 @@ def generate_better_plots(model: IGANN, features: dict[str, float], shape_functi
                     textcoords="offset points", xytext=(10, 10), ha='left', va='bottom',
                     bbox=dict(boxstyle="round,pad=0.2", fc="white", alpha=0.8))
 
-        # Customize plot appearance to match the reference
-        ax.axhline(1, color="black", linestyle="--", linewidth=0.8)  # Horizontal line at y=0
-        ax.set_xlabel(feature)  # X-axis label
-        ax.set_ylabel("")   # Remove y-axis label
-        ax.set_title(f"{feature}:\n{shape_func['avg_effect']:.2f}%")  # Add title
-        ax.tick_params(axis='both', which='major', labelsize=10)  # Adjust tick label size
-        sns.despine(left=True, bottom=True)  # Remove top and right spines
+        ax.axhline(1, color="black", linestyle="--", linewidth=0.8)
+        ax.set_xlabel(feature)
+        ax.set_ylabel("")
+        ax.set_title(f"{feature}:\n{shape_func['avg_effect']:.2f}%")
+        ax.tick_params(axis='both', which='major', labelsize=10)
+        sns.despine(left=True, bottom=True)
 
         # Add gridlines
         ax.grid(axis='both', linestyle='-', linewidth=0.5, color='lightgray')
-
-        # plt.show()
 
     return values
 
