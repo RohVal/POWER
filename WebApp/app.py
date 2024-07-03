@@ -215,9 +215,9 @@ def predict():
 
             # Remove the temporary file
             os.remove(plot_path)
-            return render_template('predict.html', result = prediction, model = 'ebm' , plot_html = plot_html )
+            return render_template('predict.html', result = prediction, model = 'EBM' , plot_html = plot_html )
 
-        return render_template('predict.html', result = prediction)
+        return render_template('predict.html', result = prediction, model = 'XGBoost')
     return render_template('predict.html')
 
 @app.route('/explain', methods=['GET'])

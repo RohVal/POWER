@@ -101,20 +101,20 @@
         {% else %}
         
         <h3>The prediction for {{model}} is {{ result }} kW hourly</h3>
-        {% if model == 'ebm' %}
+        {% if model == 'EBM' %}
         
         <h1>EBM Explanations</h1>
         <h4> {{pred}}</h4>
         <div>
             {{ plot_html|safe }}
-            
+
             <a class="btn btn-primary btn-lg btn-block" href="/explain" role="button">Global Explanations</a>
         </div>
         <hr>
         
         {% endif %}
 
-        {% if model == 'igann' %}
+        {% if model == 'IGANN' %}
         <img src="{{url_for('static', filename='/plots/wind_speed.png')}}" />
         <img src="{{url_for('static', filename='/plots/wind_speed_max.png')}}" />
         <img src="{{url_for('static', filename='/plots/wind_speed_min.png')}}" />
