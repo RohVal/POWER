@@ -175,12 +175,23 @@ def predict():
             models = {
                 'XGBoost': model_xgboost,
                 'EBM': model_ebm,
-                'IGANN' : model_igann
             }
             predictions = {}
             for name, model in models.items():
                 prediction = predict_power(model, wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction)
                 predictions[name] = prediction
+
+            # make the prediction using the IGANN model
+            features = {
+                "wind_speed": wind_speed,
+                "wind_speed_max": wind_speed_max,
+                "wind_speed_min": wind_speed_min,
+                "nacelle_temp": nacelle_temp,
+                "wind_direction": wind_direction
+            }
+
+            prediction = predict_igann(model=model_igann, feature_scaler=feature_scaler, target_scaler=target_scaler, features=features)
+            predictions['IGANN'] = prediction
 
             return render_template('predict.html', result = predictions, model = 'all')
         else:
