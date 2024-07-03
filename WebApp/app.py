@@ -195,7 +195,7 @@ def predict():
 
             prediction = predict_igann(model=model_igann, feature_scaler=feature_scaler, target_scaler=target_scaler, features=features)
 
-            return render_template('predict.html', result=prediction, model='igann')
+            return render_template('predict.html', result=prediction, model='IGANN')
 
         elif model_type == 'All':
             models = {
