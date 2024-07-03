@@ -200,7 +200,22 @@ def predict():
         prediction = predict_power(model, wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction)
 
         if model_type == 'EBM':
-            return render_template('predict.html', result = prediction, model = 'ebm' )
+            X_sample = np.array([[wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction]])
+            # local explanation
+            local_explanation = model_ebm.explain_local(X_sample)
+
+            #  preserve to save the plot to an HTML file
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.html') as temp_file:
+                preserve(local_explanation, 0,file_name=temp_file.name)
+                plot_path = temp_file.name
+
+            # Read the contents of the HTML file
+            with open(plot_path, 'r') as file:
+                plot_html = file.read()
+
+            # Remove the temporary file
+            os.remove(plot_path)
+            return render_template('predict.html', result = prediction, model = 'ebm' , plot_html = plot_html )
 
         return render_template('predict.html', result = prediction)
     return render_template('predict.html')
@@ -240,15 +255,6 @@ def elocal():
         nacelle_temp = int(request.form.get("ntemp"))
         wind_direction = (request.form.get("wind_direction"))
 
-        # input sample
-
-        arr = {
-        "Wind speed (m/s)": wind_speed,
-        "Wind speed - Maximum (m/s)": wind_speed_max,
-        "Wind speed - Minimum (m/s)": wind_speed_min,
-        "Nacelle ambient temperature (°C)": nacelle_temp,
-        "WindDirection": wind_direction}
-
         predict = predict_power(model_ebm, wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction)
         X_sample = np.array([[wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction]])
         # local explanation
@@ -270,7 +276,7 @@ def elocal():
         os.remove(plot_path)
         return render_template('local.html', plot_html = plot_html, result = True, pred = predict)
 
-    return render_template('local.html' )
+    return render_template('local.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

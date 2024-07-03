@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Home Page{% endblock %}
 {% block content %}
+<div class="container">
     <h3>Power prediction per hour</h3>
     <form action="{{ url_for("predict")}}" method="post">
-        <div class="form-group">
+        <div class="container">
             <div class="row" >
                 <div class="col">
                     <label for="model">Choose a model:</label>
@@ -76,7 +77,8 @@
     
     </form>
 
-    {% if result %}
+    <div class="container">
+        {% if result %}
         {% if model == 'all' %} 
         <h4>Predictions for All Models</h4>
         <table class="table table-bordered table-hover table-sm">
@@ -97,10 +99,19 @@
         </table>
 
         {% else %}
-        <h3>The prediction is {{ result }}</h3>
+        
+        <h3>The prediction for {{model}} is {{ result }} kW hourly</h3>
         {% if model == 'ebm' %}
-        <iframe src= "{{ url_for('static', filename='/html/sum.html') }}" height="1000" width="1400" title="Globalexplain"></iframe>
+        <h4> EBM: GLobal Explanations</h4>
+        <iframe src= "{{ url_for('static', filename='/html/sum.html') }}" height="600" width="1000" title="Globalexplain"></iframe>
+        <h1>EBM Explanations</h1>
+        <h4> {{pred}}</h4>
+        <div>
+            {{ plot_html|safe }}
+        </div>
+        <hr>
         {% endif %}
+
         {% if model == 'igann' %}
         <img src="{{url_for('static', filename='/plots/wind_speed.png')}}" />
         <img src="{{url_for('static', filename='/plots/wind_speed_max.png')}}" />
@@ -108,6 +119,9 @@
         <img src="{{url_for('static', filename='/plots/temperature.png')}}" />
         {% endif %}
         {% endif %} 
-    {% endif %}
+        {% endif %}
 
+    </div>
+    
+</div>
 {% endblock %}
