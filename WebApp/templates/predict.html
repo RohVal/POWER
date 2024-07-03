@@ -99,7 +99,6 @@
         {% else %}
         <h3>The prediction is {{ result }}</h3>
         {% if model == 'ebm' %}
-        <!-- {% include %} -->
         <iframe src= "{{ url_for('static', filename='/html/xyz.html') }}" height="1000" width="1400" title="Globalexplain"></iframe>
         {% endif %}
         {% endif %} 
