@@ -194,20 +194,17 @@ def elocal():
         "WindDirection": wind_direction}
         
         predict = predict_power(model_ebm, wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction) 
-        # X_sample = np.array([[wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction]])
-        arr2 = {"Power (kW)": predict}
-        y_val = pd.DataFrame([arr2])
+        X_sample = np.array([[wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction]])
         # local explanation
-        x_val = pd.DataFrame([arr])
-        local_explanation = model_ebm.explain_local(x_val, y_val, 0)
+        local_explanation = model_ebm.explain_local(X_sample)
         print(local_explanation)
         
         #  preserve to save the plot to an HTML file
         with tempfile.NamedTemporaryFile(delete=False, suffix='.html') as temp_file:
-            preserve(local_explanation, file_name=temp_file.name)
+            preserve(local_explanation, 0,file_name=temp_file.name)
             plot_path = temp_file.name
         
-        preserve(local_explanation, file_name="ghj.html")
+        #preserve(local_explanation, file_name="ghj.html")
 
         # Read the contents of the HTML file
         with open(plot_path, 'r') as file:
