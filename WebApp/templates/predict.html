@@ -102,14 +102,16 @@
         
         <h3>The prediction for {{model}} is {{ result }} kW hourly</h3>
         {% if model == 'ebm' %}
-        <h4> EBM: GLobal Explanations</h4>
-        <iframe src= "{{ url_for('static', filename='/html/sum.html') }}" height="600" width="1000" title="Globalexplain"></iframe>
+        
         <h1>EBM Explanations</h1>
         <h4> {{pred}}</h4>
         <div>
             {{ plot_html|safe }}
+            
+            <a class="btn btn-primary btn-lg btn-block" href="/explain" role="button">Global Explanations</a>
         </div>
         <hr>
+        
         {% endif %}
 
         {% if model == 'igann' %}

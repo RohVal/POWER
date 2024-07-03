@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block title %}Explanation{% endblock %}
 {% block content %}
-<h1>EBM Global Explanation</h1>
+<div class="container">
+    <h1>EBM Global Explanation</h1>
+    <iframe src= "{{ url_for('static', filename='/html/sum.html') }}" height="500" width="900" title="Globalexplain"></iframe>
     {% for plot_html in plot_htmls %}
     <div class="container">
         <div class="row">
@@ -10,4 +12,7 @@
     </div>
     <hr>
     {% endfor %}
+
+</div>
+
 {% endblock %}
