@@ -92,7 +92,6 @@ def ebm_model_tuned(X_train: pd.DataFrame, y_train: pd.Series) -> EBMRegressor:
         EBMRegressor: The trained EBM model
     """
 
-    # TODO add best parameters
     model = EBMRegressor(random_state=RANDOM_STATE)
     model.fit(X_train, y_train)
 
@@ -174,11 +173,10 @@ def plot_results(benchmark_1: dict, benchmark_2: dict, metric="RMSE") -> None:
         height = bar.get_height()
         ax.annotate(f'{height:.3f}',
                     xy=(bar.get_x() + bar.get_width() / 2, height),
-                    xytext=(0, 3),  # 3 points vertical offset
+                    xytext=(0, 3),
                     textcoords="offset points",
                     ha='center', va='bottom')
 
-    # Add labels, title, and legend
     ax.set_xticks(x_positions)
     ax.set_xticklabels(models, rotation=45, ha='right')
     ax.set_ylabel(metric)
@@ -298,7 +296,6 @@ if __name__ == "__main__":
     # ebm_tuned = ebm_model_tuned(X_train=X_train_1, y_train=y_train_1)
 
     # run the benchmark
-    # TODO add EBM Tuned
     models = {
         "XGBoost Default": xgb_default,
         "XGBoost Tuned": xgb_tuned,

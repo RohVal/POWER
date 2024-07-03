@@ -208,4 +208,3 @@ if __name__ == "__main__":
 # https://medium.com/swlh/using-deep-learning-to-forecast-a-wind-turbines-power-output-e87b37b9a50e
 # (https://github.com/Sk70249/Wind-Energy-Analysis-and-Forecast-using-Deep-Learning-LSTM/blob/master/Wind%20Energy%20Analysis%20and%20Prediction%20using%20LSTM%20(2).ipynb) not really but pretty similar
 # https://www.youtube.com/watch?v=tepxdcepTbY
-# worth checking out: https://medium.com/swlh/using-deep-learning-to-forecast-a-wind-turbines-power-output-e87b37b9a50e

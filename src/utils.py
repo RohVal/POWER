@@ -51,22 +51,18 @@ def cross_validation(model: Any, X: pd.DataFrame, y: pd.Series) -> dict:
     # define the cross-validation procedure (10 folds, 3 repeats)
     cv = RepeatedKFold(n_splits=10, n_repeats=3, random_state=42)
 
-    # mse_scores = cross_val_score(
-    #     model, X, y, scoring='neg_mean_squared_error', cv=cv, n_jobs=-1)
+    mse_scores = cross_val_score(
+        model, X, y, scoring='neg_mean_squared_error', cv=cv, n_jobs=-1)
     rmse_scores = cross_val_score(
         model, X, y, scoring='neg_root_mean_squared_error', cv=cv, n_jobs=-1, verbose=1)
-    print("RMSE calculated!")
-    # mae_scores = cross_val_score(
-    #     model, X, y, scoring='neg_mean_absolute_error', cv=cv, n_jobs=-1)
+    mae_scores = cross_val_score(
+        model, X, y, scoring='neg_mean_absolute_error', cv=cv, n_jobs=-1)
     r2_scores = cross_val_score(model, X, y, scoring='r2', cv=cv, n_jobs=-1, verbose=1)
-    print("R2 calculated!")
 
     return {
-        # "MSE": -mse_scores.mean(),
-        "MSE": "N/A",
+        "MSE": -mse_scores.mean(),
         "RMSE": -rmse_scores.mean(),
-        # "MAE": -mae_scores.mean(),
-        "MAE": "N/A",
+        "MAE": -mae_scores.mean(),
         "R2": r2_scores.mean()
     }
 

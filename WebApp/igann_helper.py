@@ -45,15 +45,12 @@ def generate_feature_plot(feature: str, feature_val: float, shape_func: Any, y_v
                 textcoords="offset points", xytext=(10, 10), ha='left', va='bottom',
                 bbox=dict(boxstyle="round,pad=0.2", fc="white", alpha=0.8))
 
-    # Customize plot appearance to match the reference
-    ax.axhline(1, color="black", linestyle="--", linewidth=0.8)  # Horizontal line at y=0
-    ax.set_xlabel(feature)  # X-axis label
-    ax.set_ylabel("")   # Remove y-axis label
-    ax.set_title(f"{feature}:\n{shape_func['avg_effect']:.2f}%")  # Add title
-    ax.tick_params(axis='both', which='major', labelsize=10)  # Adjust tick label size
-    sns.despine(left=True, bottom=True)  # Remove top and right spines
-
-    # Add gridlines
+    ax.axhline(1, color="black", linestyle="--", linewidth=0.8)
+    ax.set_xlabel(feature)
+    ax.set_ylabel("")
+    ax.set_title(f"{feature}:\n{shape_func['avg_effect']:.2f}%")
+    ax.tick_params(axis='both', which='major', labelsize=10)
+    sns.despine(left=True, bottom=True)
     ax.grid(axis='both', linestyle='-', linewidth=0.5, color='lightgray')
 
     return fig
