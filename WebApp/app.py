@@ -133,8 +133,6 @@ def predict_power(model, wind_speed, wind_speed_max, wind_speed_min, nacelle_tem
         }
         df = pd.DataFrame([data])
         prediction = model.predict(df)[0]
-        # preserve(model.explain_global(), file_name = "xyz.html")
-        # preserve(show(model.explain_global()), file_name = "shobc")
         return prediction
 
 

@@ -30,3 +30,5 @@ plots/
 # igann model 
 models/igann.pkl:Zone.Identifier
 models/igann.pkl
+WebApp/__pycache__/igann_helper.cpython-38.pyc
+WebApp/static/html/sum (2).html:Zone.Identifier

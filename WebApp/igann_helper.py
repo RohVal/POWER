@@ -10,6 +10,7 @@ from matplotlib.figure import Figure
 import seaborn as sns
 from igann import IGANN
 import numpy as np
+from typing import Dict
 
 FILENAMES = {
     "Wind speed (m/s)": "wind_speed",
@@ -58,13 +59,13 @@ def generate_feature_plot(feature: str, feature_val: float, shape_func: Any, y_v
     return fig
 
 
-def make_prediction(clear_plots_dir: bool, features: dict[str, float], model: IGANN, shape_functions: Any) -> float:
+def make_prediction(clear_plots_dir: bool, features: Dict[str, float], model: IGANN, shape_functions: Any) -> float:
 
     shape_function_values = []
 
     if clear_plots_dir:
         # Clear the plots directory
-        clear_directory("./plots")
+        clear_directory("./static/plots")
 
     for feature, value in features.items():
         # Find the shape function for the feature
@@ -81,7 +82,7 @@ def make_prediction(clear_plots_dir: bool, features: dict[str, float], model: IG
 
         # Save the plot
         filename = FILENAMES.get(feature, feature.lower())
-        fig.savefig(f"./plots/{filename}.png")
+        fig.savefig(f"./static/plots/{filename}.png")
         plt.close(fig)
 
     return sum(shape_function_values) + model.init_classifier.intercept_

@@ -99,7 +99,13 @@
         {% else %}
         <h3>The prediction is {{ result }}</h3>
         {% if model == 'ebm' %}
-        <iframe src= "{{ url_for('static', filename='/html/xyz.html') }}" height="1000" width="1400" title="Globalexplain"></iframe>
+        <iframe src= "{{ url_for('static', filename='/html/sum.html') }}" height="1000" width="1400" title="Globalexplain"></iframe>
+        {% endif %}
+        {% if model == 'igann' %}
+        <img src="{{url_for('static', filename='/plots/wind_speed.png')}}" />
+        <img src="{{url_for('static', filename='/plots/wind_speed_max.png')}}" />
+        <img src="{{url_for('static', filename='/plots/wind_speed_min.png')}}" />
+        <img src="{{url_for('static', filename='/plots/temperature.png')}}" />
         {% endif %}
         {% endif %} 
     {% endif %}
