@@ -178,9 +178,6 @@ def train_model(X_train: pd.DataFrame, y_train: pd.Series) -> XGBRegressor:
         XGBRegressor: the trained model
     """
 
-    # model = XGBRegressor(colsample_bytree=1, gamma=0.5, learning_rate=0.01,
-    #                      max_depth=7, n_estimators=1350, subsample=0.7)
-
     model = XGBRegressor(booster="gbtree", colsample_bytree=0.7, learning_rate=0.01,
                          max_depth=5, min_child_weight=2, n_estimators=900, subsample=0.9)
     model.fit(X_train, y_train, )
