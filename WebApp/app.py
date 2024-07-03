@@ -140,6 +140,34 @@ def predict_power(model, wind_speed, wind_speed_max, wind_speed_min, nacelle_tem
 def index():
     return render_template('index.html')
 
+@app.route('/about')
+def about():
+# Get student data (e.g., from a list or database)
+    students = [
+        {'name': 'PETR KHARATYAN', 'role': 'Team Lead: Coordination, Concept, Analysis, Report'},
+        {'name': 'Nikolas', 'role': 'Data Scientist, Concept, Analysis, Back-End Developer, Report'},
+        {'name': 'ROHIT NARESH VALECHA', 'role': 'Data Scientist, Concept, Analysis, Full-Stack Developer, Report'},
+        {'name': 'PETER LAMMERZ', 'role': 'Design, Assistance'},
+
+
+    ]
+
+    abstract = """
+    Efficient electricity management requires a precise understanding of power plant capacities, actual
+    energy production, and demand levels. Renewable energy sources, such as wind and solar power, are
+    inherently variable and cannot be directly controlled. However, it is possible to predict their output using
+    meteorological data as input. While these efforts primarily emphasize prediction accuracy, the increasing
+    complexity of the models has turned the forecasting process into a black box. Complex models, while
+    often superior on test sets, have drawn attention due to perceived transparency issues and questions about
+    their robustness in dynamic wind turbine environments. Our goal is to balance prediction accuracy with
+    model interpretability, addressing the common trade-off between these two aspects of machine learning.
+    The models serve as the foundation for an easy-to-use Web Application, which we also introduce in this
+    report.
+    """
+
+    return render_template('about.html', students=students, abstract=abstract)
+
+
 @app.route('/predict', methods = ['GET','POST'])
 def predict():
 
