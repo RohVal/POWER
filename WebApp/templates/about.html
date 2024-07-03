@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}About POWER{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>About POWER</h1>
+
+    <p class="lead">
+        POWER is a machine learning project developed by a team of four dedicated students, aiming to revolutionize wind energy forecasting.
+    </p>
+
+    <h2>Our Mission</h2>
+    <p>
+        We are committed to demonstrating the power and potential of white box models in the realm of wind energy forecasting. Our mission is to show that interpretable models, such as IGANN (Interpretable Generalized Additive Neural Networks) and EBM (Explainable Boosting Machine), can achieve comparable prediction accuracy to black box models while offering crucial transparency and understanding.
+    </p>
+
+    <h2>Project Abstract</h2>
+    <p>
+        {{ abstract }}
+    </p>
+
+    <h2>Meet the Team</h2>
+    <div class="row">
+        {% for student in students %}
+        <div class="col-md-3 text-center">
+            <h4>{{ student.name }}</h4>
+            <p>{{ student.role }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
