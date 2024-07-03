@@ -1,5 +1,21 @@
 {% extends "base.html" %}
-{% block title %}Home Page{% endblock %}
+
+{% block title %}POWER - Prediction of Output from Wind Energy Resources{% endblock %}
+
 {% block content %}
-<h1>TODO: ...</h1>
+
+<div class="jumbotron text-center">
+    <h1>Hey, nice to meet you! 👋</h1>
+    <h2>Welcome to POWER</h2>
+    <p class="lead">
+        **Prediction of Output from Wind Energy Resources**
+    </p>
+    <hr class="my-4">
+    <p>
+        Empowering a sustainable future through accurate wind energy forecasting.
+    </p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('predict') }}" role="button">Predict Wind Power</a>
+</div>
+</div>
+
 {% endblock %}
