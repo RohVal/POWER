@@ -33,3 +33,8 @@ models/igann.pkl
 WebApp/__pycache__/igann_helper.cpython-38.pyc
 WebApp/static/html/sum (2).html:Zone.Identifier
 WebApp/templates/facelift.html
+WebApp/static/html/direct.html:Zone.Identifier
+WebApp/static/html/max.html:Zone.Identifier
+WebApp/static/html/min.html:Zone.Identifier
+WebApp/static/html/temp.html:Zone.Identifier
+WebApp/static/html/ws.html:Zone.Identifier

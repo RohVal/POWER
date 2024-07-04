@@ -8,40 +8,39 @@
             <div class="row" >
                 <div class="col">
                     <label for="model">Choose a model:</label>
-                    <select id="model" name="model">
-                    <option value="XGBoost">XGBoost</option>
-                    <option value="IGANN">IGANN</option>
-                    <option value="EBM">EBM </option>
-                    <option value="All">All</option>
-                </select><br>
-                </div>
-                
+                    <select id="model" name="model" aria-placeholder="select model">
+                        <option value="All">All</option>
+                        <option value="XGBoost">XGBoost</option>
+                        <option value="IGANN">IGANN</option>
+                        <option value="EBM">EBM </option>
+                    </select><br>
+                </div>    
             </div>
             <div class="row">
                 <div class="col" >
                     <label for="wind_speed">Wind speed (m/s):</label>
-                    <input type="number" id="wind_speed" name="wspeed" step="1" required><br>
+                    <input type="number" id="wind_speed" name="wspeed" step="any" required><br>
                 </div>
                 
             </div>
             <div class="row">
                 <div class="col">
                     <label for="wind_speed_max">Wind speed - Maximum (m/s):</label>
-                    <input type="number" id="wind_speed_max" name="wspeed_max" step="1" required><br>
+                    <input type="number" id="wind_speed_max" name="wspeed_max" step="any" required><br>
                 </div>
                 
             </div>
             <div class="row">
                 <div class="col">
                     <label for="wind_speed_min">Wind speed - Minimum (m/s):</label>
-                    <input type="number" id="wind_speed_min" name="wspeed_min" step="0.01" required><br>
+                    <input type="number" id="wind_speed_min" name="wspeed_min" step="any" required><br>
                 </div>
                 
             </div>
             <div class="row">
                 <div class="col">
                     <label for="nacelle_temp">Nacelle ambient temperature (°C):</label>
-                    <input type="number" id="nacelle_temp" name="ntemp" step="0.1" required><br>
+                    <input type="number" id="nacelle_temp" name="ntemp" step="any" required><br>
                 </div>
                 
             </div>
@@ -49,9 +48,6 @@
                 <div class="col">
                     <label for="wind_direction">Wind direction:</label>
                 <select id="wind_direction" name="wind_direction">
-                    <option value="E">E</option>
-                    <option value="E/NE">E/NE</option>
-                    <option value="E/SE">E/SE</option>
                     <option value="N">N</option>
                     <option value="N/NE">N/NE</option>
                     <option value="N/NW">N/NW</option>
@@ -65,6 +61,9 @@
                     <option value="W">W</option>
                     <option value="W/NW">W/NW</option>
                     <option value="W/SW">W/SW</option>
+                    <option value="E">E</option>
+                    <option value="E/NE">E/NE</option>
+                    <option value="E/SE">E/SE</option>
                 </select><br>
                 </div>
             </div>
@@ -119,6 +118,8 @@
         <img src="{{url_for('static', filename='/plots/wind_speed_max.png')}}" />
         <img src="{{url_for('static', filename='/plots/wind_speed_min.png')}}" />
         <img src="{{url_for('static', filename='/plots/temperature.png')}}" />
+        <img src="{{url_for('static', filename=dirplot)}}" />
+
         {% endif %}
         {% endif %} 
         {% endif %}

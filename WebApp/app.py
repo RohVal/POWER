@@ -6,6 +6,8 @@ import numpy as np
 from igann import IGANN
 from sklearn.preprocessing import StandardScaler
 from igann_helper import transform_features, scale_features, make_prediction
+from os import listdir, remove
+from os.path import join
 
 # from src.igann_visualization import *
 import tempfile
@@ -49,10 +51,10 @@ WIND_DIRECTION_FEATURES = [ "E/NE", "E/SE", "N", "N/NE", "N/NW", "NE", "NW", "S"
 
 PREDICTION_NAME = "Power (kW)(generated in one hour)"
 LOGICAL_BOUNDS = {
-    "Wind speed (m/s)": (0, 27),
-    "Wind speed - Maximum (m/s)": (0, 27),
-    "Wind speed - Minimum (m/s)": (0, 27),
-    "Nacelle ambient temperature (°C)": (-20, 42)
+    "Wind speed (m/s)": (0.0, 27.0),
+    "Wind speed - Maximum (m/s)": (0.0, 27.0),
+    "Wind speed - Minimum (m/s)": (0.0, 27.0),
+    "Nacelle ambient temperature (°C)": (-20.0, 42.0)
 }
 
 
@@ -173,10 +175,10 @@ def predict():
 
     if request.method == "POST":
 
-        wind_speed = int(request.form.get("wspeed"))
-        wind_speed_max = int(request.form.get("wspeed_max"))
-        wind_speed_min = int(request.form.get("wspeed_min"))
-        nacelle_temp = int(request.form.get("ntemp"))
+        wind_speed = float(request.form.get("wspeed"))
+        wind_speed_max = float(request.form.get("wspeed_max"))
+        wind_speed_min = float(request.form.get("wspeed_min"))
+        nacelle_temp = float(request.form.get("ntemp"))
         wind_direction = (request.form.get("wind_direction"))
         model_type = request.form.get("model")
 
@@ -194,8 +196,12 @@ def predict():
             }
 
             prediction = predict_igann(model=model_igann, feature_scaler=feature_scaler, target_scaler=target_scaler, features=features)
+            feat_dir = features['wind_direction'].lower()
+            feat_dir = feat_dir.replace("/", "_")
+            print(feat_dir)
+            wdir_path = f'/plots/{feat_dir}.png' 
 
-            return render_template('predict.html', result=prediction, model='IGANN')
+            return render_template('predict.html', result=prediction, model='IGANN', dirplot = wdir_path)
 
         elif model_type == 'All':
             models = {
@@ -226,7 +232,7 @@ def predict():
 
 
         prediction = predict_power(model, wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction)
-
+        prediction = "{:.2f}".format(prediction) 
         if model_type == 'EBM':
             X_sample = np.array([[wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction]])
             # local explanation
@@ -250,61 +256,8 @@ def predict():
 
 @app.route('/explain', methods=['GET'])
 def explain():
+    return render_template('explain.html') #, plot_htmls=plot_htmls)
 
-    explanation = model_ebm.explain_global()
-    print("length = " + str(len(explanation.data())))
-
-    plot_htmls = []
-    for i in range(5):  # just the feature graphs
-        with tempfile.NamedTemporaryFile(delete=False, suffix='.html') as temp_file:
-            preserve(explanation, selector_key=i, file_name=temp_file.name)
-            plot_path = temp_file.name
-
-        # read HTML file
-        with open(plot_path, 'r') as file:
-            plot_html = file.read()
-
-        # Append to the list
-        plot_htmls.append(plot_html)
-
-        # Remove the temporary file
-        os.remove(plot_path)
-
-    return render_template('explain.html', plot_htmls=plot_htmls)
-
-
-@app.route('/local', methods = ['GET','POST'])
-def elocal():
-    if request.method == "POST":
-
-        wind_speed = int(request.form.get("wspeed"))
-        wind_speed_max = int(request.form.get("wspeed_max"))
-        wind_speed_min = int(request.form.get("wspeed_min"))
-        nacelle_temp = int(request.form.get("ntemp"))
-        wind_direction = (request.form.get("wind_direction"))
-
-        predict = predict_power(model_ebm, wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction)
-        X_sample = np.array([[wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction]])
-        # local explanation
-        local_explanation = model_ebm.explain_local(X_sample)
-        print(local_explanation)
-
-        #  preserve to save the plot to an HTML file
-        with tempfile.NamedTemporaryFile(delete=False, suffix='.html') as temp_file:
-            preserve(local_explanation, 0,file_name=temp_file.name)
-            plot_path = temp_file.name
-
-        #preserve(local_explanation, file_name="ghj.html")
-
-        # Read the contents of the HTML file
-        with open(plot_path, 'r') as file:
-            plot_html = file.read()
-
-        # Remove the temporary file
-        os.remove(plot_path)
-        return render_template('local.html', plot_html = plot_html, result = True, pred = predict)
-
-    return render_template('local.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

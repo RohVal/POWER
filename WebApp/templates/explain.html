@@ -3,16 +3,21 @@
 {% block content %}
 <div class="container">
     <h1>EBM Global Explanation</h1>
-    <iframe src= "{{ url_for('static', filename='/html/sum.html') }}" height="500" width="900" title="Globalexplain"></iframe>
-    {% for plot_html in plot_htmls %}
-    <div class="container">
-        <div class="row">
-            {{ plot_html|safe }}
-        </div>
-    </div>
-    <hr>
-    {% endfor %}
-
+    <iframe src= "{{ url_for('static', filename='/html/sum.html') }}" height="500" width="1111" title="Globalexplain"></iframe>
+    <iframe src= "{{ url_for('static', filename='/html/ws.html') }}" height="500" width="1111" title="Globalexplain"></iframe>
+    <iframe src= "{{ url_for('static', filename='/html/max.html') }}" height="500" width="1111" title="Globalexplain"></iframe>
+    <iframe src= "{{ url_for('static', filename='/html/min.html') }}" height="500" width="1111" title="Globalexplain"></iframe>
+    <iframe src= "{{ url_for('static', filename='/html/nactemp.html') }}" height="500" width="1111" title="Globalexplain"></iframe>
+    <iframe src= "{{ url_for('static', filename='/html/direction.html') }}" height="500" width="1111" title="Globalexplain"></iframe>
+    
+    <a class="btn btn-primary btn-lg btn-block" role="button" onclick="goBack()">Go Back</a>
+    
 </div>
+
+<script>
+    function goBack() {
+      window.history.back();
+    }
+    </script>
 
 {% endblock %}
