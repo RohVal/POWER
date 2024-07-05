@@ -198,7 +198,7 @@ def predict():
             prediction = predict_igann(model=model_igann, feature_scaler=feature_scaler, target_scaler=target_scaler, features=features)
             feat_dir = features['wind_direction'].lower()
             feat_dir = feat_dir.replace("/", "_")
-            print(feat_dir)
+            # print(feat_dir)
             wdir_path = f'/plots/{feat_dir}.png' 
 
             return render_template('predict.html', result=prediction, model='IGANN', dirplot = wdir_path)
@@ -211,6 +211,7 @@ def predict():
             predictions = {}
             for name, model in models.items():
                 prediction = predict_power(model, wind_speed, wind_speed_max, wind_speed_min, nacelle_temp, wind_direction)
+                prediction = "{:.2f}".format(prediction)
                 predictions[name] = prediction
 
             # make the prediction using the IGANN model
